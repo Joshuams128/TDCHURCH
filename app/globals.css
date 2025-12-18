@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header Styles */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  background: transparent;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.coming-up {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.calendar-icon {
+  color: white;
+}
+
+.hamburger {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: opacity 0.3s;
+}
+
+.hamburger:hover {
+  opacity: 0.7;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 999;
+  padding: 2rem;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mobile-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: opacity 0.3s;
+}
+
+.mobile-nav a:hover {
+  opacity: 0.7;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.hero-heading {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.hero-subheading {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 3rem;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .coming-up {
+    font-size: 0.875rem;
+  }
+
+  .calendar-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-heading {
+    font-size: 2rem;
+  }
+
+  .hero-subheading {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+
+  .mobile-nav {
+    top: 70px;
+  }
+}
