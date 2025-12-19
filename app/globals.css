@@ -649,12 +649,70 @@ body {
   min-height: 100vh;
 }
 
-.about-hero {
-  padding: 4rem 2rem;
-  background: #f9f9f9;
+/* Hero Section with Image */
+.about-hero-section {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 500px;
 }
 
-.about-hero-container {
+.about-hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.about-hero-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  line-height: 1.2;
+}
+
+/* Mission Statement Section */
+.about-mission-statement {
+  padding: 0;
+  background: #FFEB3B;
+}
+
+.about-statement-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 3rem;
+  text-align: center;
+}
+
+.about-statement-text {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* Welcome Section */
+.about-welcome-section {
+  padding: 5rem 2rem;
+  background: white;
+}
+
+.about-welcome-container {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -663,50 +721,191 @@ body {
   align-items: center;
 }
 
-.about-hero-left {
+.about-welcome-image {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.about-welcome-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-welcome-content {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.about-heading {
+.about-welcome-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: #000;
+}
+
+.about-welcome-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.about-welcome-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: #FFEB3B;
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-self: flex-start;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.about-welcome-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Pastors Section */
+.about-pastors-section {
+  padding: 5rem 2rem;
+  background: #f9f9f9;
+}
+
+.about-pastors-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-section-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
   text-transform: uppercase;
-  color: #333;
-  line-height: 1.2;
+  margin-bottom: 3rem;
+  color: #000;
 }
 
-.about-subheading {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  color: #666;
-  line-height: 1.6;
+.about-pastors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
 }
 
-.about-hero-image img {
-  width: 100%;
-  height: auto;
+.about-pastor-card {
+  background: white;
   border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.about-content-section {
-  padding: 4rem 2rem;
+.about-pastor-image {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-pastor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-pastor-info {
+  padding: 2rem;
+}
+
+.about-pastor-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.about-pastor-title {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.about-pastor-bio {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Mission Section */
+.about-mission-section {
+  padding: 5rem 2rem;
   background: white;
 }
 
-.about-text-box {
-  max-width: 900px;
+.about-mission-container {
+  max-width: 1000px;
   margin: 0 auto;
+  text-align: center;
+}
+
+.about-mission-box {
+  margin-top: 2rem;
   padding: 3rem;
   background: #f9f9f9;
   border-radius: 8px;
   font-size: 1.125rem;
-  color: #444;
   line-height: 1.8;
+  color: #444;
 }
 
-.about-text-box p {
-  margin-bottom: 1.5rem;
+/* Vision Section */
+.about-vision-section {
+  padding: 5rem 2rem;
+  background: #f9f9f9;
+}
+
+.about-vision-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.about-vision-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.about-vision-card:hover {
+  transform: translateY(-4px);
+}
+
+.about-vision-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.about-vision-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #666;
 }
 
 @media (max-width: 768px) {
@@ -714,9 +913,26 @@ body {
     padding-top: 70px;
   }
 
-  .about-hero-container {
+  .about-hero-section {
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .about-statement-container {
+    padding: 4rem 2rem;
+  }
+
+  .about-welcome-container {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .about-pastors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-vision-grid {
+    grid-template-columns: 1fr;
   }
 }
 
