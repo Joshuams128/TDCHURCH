@@ -1,10 +1,31 @@
 import { urlFor } from '@/lib/sanity'
 
 export default function Hero({ homepage }) {
+  // Determine video source
+  const videoUrl = homepage?.heroVideoUrl
+  const videoFile = homepage?.heroVideoFile?.asset?.url
+  const videoSource = videoUrl || videoFile
+
   return (
     <section className="hero">
-      {/* Background Image */}
-      {homepage?.heroImage && (
+      {/* Background Video */}
+      {videoSource && (
+        <div className="hero-background">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="hero-video"
+          >
+            <source src={videoSource} />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+
+      {/* Fallback Background Image */}
+      {!videoSource && homepage?.heroImage && (
         <div
           className="hero-background"
           style={{

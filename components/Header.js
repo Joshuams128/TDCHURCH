@@ -28,10 +28,10 @@ export default function Header({ siteSettings }) {
 
           {/* Right Side: Coming Up & Hamburger Menu */}
           <div className="right-section">
-            <div className="coming-up">
+            <Link href="/schedule" className="coming-up">
               <Calendar className="calendar-icon" size={20} />
               <span>Coming Up</span>
-            </div>
+            </Link>
 
             <button
               className="hamburger"

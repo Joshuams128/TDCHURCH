@@ -8,7 +8,12 @@ async function getSiteSettings() {
 }
 
 async function getHomepage() {
-  const query = '*[_type == "homepage"][0]'
+  const query = `*[_type == "homepage"][0]{
+    ...,
+    heroVideoFile{
+      asset->
+    }
+  }`
   return await client.fetch(query)
 }
 
