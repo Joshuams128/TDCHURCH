@@ -3,19 +3,64 @@ export default {
   title: 'What We Believe In',
   type: 'document',
   fields: [
+    // Hero Section
     {
-      name: 'heading',
-      title: 'Heading',
+      name: 'heroHeading',
+      title: 'Hero Heading',
       type: 'string',
+      description: 'e.g., "WHAT WE BELIEVE"',
     },
     {
-      name: 'introduction',
-      title: 'Introduction',
+      name: 'heroImage',
+      title: 'Hero Background Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    
+    // General Rules of Conduct Section
+    {
+      name: 'conductHeading',
+      title: 'Rules of Conduct - Heading',
+      type: 'string',
+      description: 'e.g., "General Rules Of Conduct"',
+    },
+    {
+      name: 'conductIntro',
+      title: 'Rules of Conduct - Introduction',
       type: 'text',
+      rows: 3,
     },
     {
-      name: 'beliefs',
-      title: 'Beliefs',
+      name: 'conductRules',
+      title: 'Rules of Conduct - List',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'rule',
+              title: 'Rule',
+              type: 'text',
+              rows: 2,
+            },
+          ],
+        },
+      ],
+    },
+    
+    // Statement of Faith Section
+    {
+      name: 'faithHeading',
+      title: 'Statement of Faith - Heading',
+      type: 'string',
+      description: 'e.g., "General Statement of Faith We Believe"',
+    },
+    {
+      name: 'faithStatements',
+      title: 'Statement of Faith - Items',
       type: 'array',
       of: [
         {
@@ -23,17 +68,20 @@ export default {
           fields: [
             {
               name: 'title',
-              title: 'Belief Title',
+              title: 'Title',
               type: 'string',
+              description: 'e.g., "1. Jesus Christ", "2. The Blood"',
             },
             {
               name: 'description',
               title: 'Description',
               type: 'text',
+              rows: 3,
             },
           ],
         },
       ],
+      validation: (Rule) => Rule.max(5),
     },
   ],
 }

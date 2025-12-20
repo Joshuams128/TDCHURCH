@@ -12,6 +12,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Animation Keyframes */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Header Styles */
 .header {
   position: absolute;
@@ -222,6 +243,8 @@ body {
   margin-bottom: 1rem;
   letter-spacing: 2px;
   line-height: 1.2;
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
 }
 
 .hero-subheading {
@@ -230,6 +253,8 @@ body {
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   letter-spacing: 1px;
+  animation: slideUp 1s ease-out 0.2s forwards;
+  opacity: 0;
 }
 
 .cta-button {
@@ -245,6 +270,8 @@ body {
   letter-spacing: 1px;
   transition: all 0.3s ease;
   cursor: pointer;
+  animation: slideUp 1.2s ease-out 0.4s forwards;
+  opacity: 0;
 }
 
 .cta-button:hover {
@@ -522,7 +549,165 @@ body {
   line-height: 1.6;
 }
 
-/* Beliefs List */
+/* Beliefs Page */
+.beliefs-page {
+  min-height: 100vh;
+  background: white;
+}
+
+/* Beliefs Hero Section */
+.beliefs-hero {
+  position: relative;
+  height: 50vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beliefs-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.beliefs-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.beliefs-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.beliefs-hero-heading {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 2px;
+}
+
+/* Conduct Section */
+.beliefs-conduct-section {
+  padding: 5rem 3rem;
+  background: white;
+}
+
+.beliefs-conduct-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.beliefs-conduct-heading {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.beliefs-conduct-intro {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+.beliefs-conduct-list {
+  text-align: center;
+  list-style: none;
+  counter-reset: conduct-counter;
+  padding: 0;
+}
+
+.beliefs-conduct-item {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 0.75rem;
+  counter-increment: conduct-counter;
+}
+
+.beliefs-conduct-item:before {
+  content: counter(conduct-counter) ". ";
+  font-weight: 600;
+}
+
+/* Faith Section */
+.beliefs-faith-section {
+  padding: 5rem 3rem;
+  background: #f9f9f9;
+}
+
+.beliefs-faith-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.beliefs-faith-heading {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.beliefs-faith-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+}
+
+.beliefs-faith-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.beliefs-faith-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.beliefs-faith-title {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+.beliefs-faith-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .beliefs-conduct-section,
+  .beliefs-faith-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .beliefs-faith-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Old Beliefs Styles (kept for backwards compatibility) */
 .beliefs-list {
   padding: 4rem 2rem;
   background: white;
