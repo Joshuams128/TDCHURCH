@@ -12,15 +12,25 @@ async function getGiving() {
   return await client.fetch(query)
 }
 
+async function getUpcomingEvent() {
+  const query = `*[_type == "schedule" && showOnHomepage == true] | order(eventDate asc) [0] {
+    eventTitle,
+    eventDate,
+    eventTime
+  }`
+  return await client.fetch(query)
+}
+
 export default async function GivingPage() {
-  const [siteSettings, giving] = await Promise.all([
+  const [siteSettings, giving, upcomingEvent] = await Promise.all([
     getSiteSettings(),
     getGiving(),
+    getUpcomingEvent(),
   ])
 
   return (
     <>
-      <Header siteSettings={siteSettings} />
+      <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
       <main className="content-page">
         <section className="content-hero">
           <div className="content-container">

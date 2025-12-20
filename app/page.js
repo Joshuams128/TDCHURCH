@@ -61,9 +61,11 @@ export default async function Home() {
     getHomeEvents(),
   ])
 
+  const upcomingEvent = events && events.length > 0 ? events[0] : null
+
   return (
     <>
-      <Header siteSettings={siteSettings} />
+      <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
       <main>
         <Hero homepage={homepage} events={events} />
       </main>

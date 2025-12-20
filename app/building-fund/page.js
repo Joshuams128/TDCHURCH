@@ -14,15 +14,25 @@ async function getBuildingFund() {
   return await client.fetch(query, {}, { next: { revalidate: 60 } })
 }
 
+async function getUpcomingEvent() {
+  const query = `*[_type == "schedule" && showOnHomepage == true] | order(eventDate asc) [0] {
+    eventTitle,
+    eventDate,
+    eventTime
+  }`
+  return await client.fetch(query, {}, { next: { revalidate: 300 } })
+}
+
 export default async function BuildingFundPage() {
-  const [siteSettings, buildingFund] = await Promise.all([
+  const [siteSettings, buildingFund, upcomingEvent] = await Promise.all([
     getSiteSettings(),
     getBuildingFund(),
+    getUpcomingEvent(),
   ])
 
   return (
     <>
-      <Header siteSettings={siteSettings} />
+      <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
       <main className="building-fund-page">
         {/* Hero Section - Two Column Layout */}
         <section className="building-fund-hero">

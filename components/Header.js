@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { X } from 'lucide-react'
+import { X, Calendar } from 'lucide-react'
 import { urlFor } from '@/lib/sanity'
 
-export default function Header({ siteSettings }) {
+export default function Header({ siteSettings, upcomingEvent }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   // Split navigation items based on showOnTop property
@@ -31,20 +31,31 @@ export default function Header({ siteSettings }) {
             )}
           </Link>
 
-          {/* Hamburger Menu */}
-          <button
-            className="hamburger"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={28} /> : (
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
+          {/* Right Section with Coming Up and Hamburger */}
+          <div className="right-section">
+            {/* Coming Up Schedule */}
+            {upcomingEvent && (
+              <Link href="/schedule" className="coming-up" style={{ background: 'rgba(0, 0, 0, 0.6)', padding: '0.5rem 1rem', borderRadius: '8px' }}>
+                <Calendar className="calendar-icon" size={20} />
+                <span>Coming Up: {upcomingEvent.eventTitle}</span>
+              </Link>
             )}
-          </button>
+
+            {/* Hamburger Menu */}
+            <button
+              className="hamburger"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={28} /> : (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </header>
 

@@ -12,15 +12,25 @@ async function getAbout() {
   return await client.fetch(query)
 }
 
+async function getUpcomingEvent() {
+  const query = `*[_type == "schedule" && showOnHomepage == true] | order(eventDate asc) [0] {
+    eventTitle,
+    eventDate,
+    eventTime
+  }`
+  return await client.fetch(query)
+}
+
 export default async function AboutPage() {
-  const [siteSettings, about] = await Promise.all([
+  const [siteSettings, about, upcomingEvent] = await Promise.all([
     getSiteSettings(),
     getAbout(),
+    getUpcomingEvent(),
   ])
 
   return (
     <>
-      <Header siteSettings={siteSettings} />
+      <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
       <main className="about-page">
         {/* Main Intro Section */}
         {(about?.mainHeading || about?.mainDescription || about?.mainImage) && (

@@ -1,6 +1,7 @@
 import { client, urlFor } from '@/lib/sanity'
 import Header from '@/components/Header'
 import Image from 'next/image'
+import BackButton from './BackButton'
 
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
@@ -44,7 +45,9 @@ export default async function SchedulePage() {
       <div className="schedule-fullscreen">
         <div className="schedule-fullscreen-overlay" />
         <div className="schedule-fullscreen-content">
-          <h1 className="schedule-fullscreen-title">COMING UP AT C3</h1>
+          <BackButton />
+          
+          <h1 className="schedule-fullscreen-title">COMING UP AT TDC</h1>
           
           {/* Ongoing Events Section */}
           {ongoingEvents.length > 0 && (

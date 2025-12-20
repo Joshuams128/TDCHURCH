@@ -12,15 +12,25 @@ async function getSunday() {
   return await client.fetch(query)
 }
 
+async function getUpcomingEvent() {
+  const query = `*[_type == "schedule" && showOnHomepage == true] | order(eventDate asc) [0] {
+    eventTitle,
+    eventDate,
+    eventTime
+  }`
+  return await client.fetch(query)
+}
+
 export default async function SundayPage() {
-  const [siteSettings, sunday] = await Promise.all([
+  const [siteSettings, sunday, upcomingEvent] = await Promise.all([
     getSiteSettings(),
     getSunday(),
+    getUpcomingEvent(),
   ])
 
   return (
     <>
-      <Header siteSettings={siteSettings} />
+      <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
       <main className="sunday-page">
         {/* Hero Section */}
         <section className="sunday-hero">
