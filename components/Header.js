@@ -3,11 +3,15 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Calendar, Menu, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { urlFor } from '@/lib/sanity'
 
 export default function Header({ siteSettings }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // Split navigation items based on showOnTop property
+  const topNavItems = siteSettings?.navigation?.filter(item => item.showOnTop).slice(0, 4) || []
+  const bottomNavItems = siteSettings?.navigation?.filter(item => !item.showOnTop) || []
 
   return (
     <>
@@ -27,33 +31,65 @@ export default function Header({ siteSettings }) {
             )}
           </Link>
 
-          {/* Right Side: Coming Up & Hamburger Menu */}
-          <div className="right-section">
-            <Link href="/schedule" className="coming-up">
-              <Calendar className="calendar-icon" size={20} />
-              <span>Coming Up</span>
-            </Link>
-
-            <button
-              className="hamburger"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
+          {/* Hamburger Menu */}
+          <button
+            className="hamburger"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={28} /> : (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </button>
         </div>
       </header>
 
       {/* Full Screen Navigation Menu */}
       {isMenuOpen && (
         <nav className="fullscreen-nav">
-          <div className="nav-grid">
-            <div className="nav-column nav-left">
-              {siteSettings?.navigation?.slice(0, 3).map((item, index) => (
-                <div key={index} className="nav-item">
+          <button 
+            className="nav-close"
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={32} />
+          </button>
+
+          {/* Top Row Navigation */}
+          {topNavItems.length > 0 && (
+            <div className="nav-top-row">
+              {topNavItems.map((item, index) => (
+                <div key={index} className="nav-top-item">
                   {item.url ? (
-                    <Link href={item.url} onClick={() => setIsMenuOpen(false)}>
+                    <Link 
+                      href={item.url} 
+                      onClick={() => setIsMenuOpen(false)}
+                      style={{ color: item.highlightColor || 'white' }}
+                    >
+                      {item.title}
+                    </Link>
+                  ) : (
+                    <span style={{ color: item.highlightColor || 'white' }}>{item.title}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Bottom Grid Navigation */}
+          {bottomNavItems.length > 0 && (
+            <div className="nav-bottom-grid">
+              {bottomNavItems.map((item, index) => (
+                <div key={index} className="nav-grid-item">
+                  {item.url ? (
+                    <Link 
+                      href={item.url} 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       {item.title}
                     </Link>
                   ) : (
@@ -61,35 +97,6 @@ export default function Header({ siteSettings }) {
                   )}
                 </div>
               ))}
-            </div>
-            
-            <div className="nav-column nav-right">
-              {siteSettings?.navigation?.slice(3, 6).map((item, index) => (
-                <div key={index} className="nav-item">
-                  {item.url ? (
-                    <Link href={item.url} onClick={() => setIsMenuOpen(false)}>
-                      {item.title}
-                    </Link>
-                  ) : (
-                    <span>{item.title}</span>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          {siteSettings?.navigation?.[6] && (
-            <div className="nav-center-bottom">
-              {siteSettings.navigation[6].url ? (
-                <Link 
-                  href={siteSettings.navigation[6].url} 
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {siteSettings.navigation[6].title}
-                </Link>
-              ) : (
-                <span>{siteSettings.navigation[6].title}</span>
-              )}
             </div>
           )}
         </nav>

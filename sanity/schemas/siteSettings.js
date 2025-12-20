@@ -20,6 +20,7 @@ export default {
       name: 'navigation',
       title: 'Navigation',
       type: 'array',
+      description: 'Toggle "Show on Top" to display up to 4 items in the top row. The rest will appear in the grid below.',
       of: [
         {
           type: 'object',
@@ -33,6 +34,19 @@ export default {
               name: 'url',
               title: 'URL',
               type: 'string',
+            },
+            {
+              name: 'showOnTop',
+              title: 'Show on Top',
+              type: 'boolean',
+              description: 'Display this item in the top row (max 4 items)',
+              initialValue: false,
+            },
+            {
+              name: 'highlightColor',
+              title: 'Highlight Color',
+              type: 'string',
+              description: 'Optional: Hex color for this item (e.g., #0066FF for blue)',
             },
           ],
         },
