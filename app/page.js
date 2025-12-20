@@ -2,12 +2,13 @@ import { client } from '@/lib/sanity'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import { urlFor } from '@/lib/sanity'
-import Image from 'next/image'
-import Link from 'next/link'
+
+// Enable ISR - revalidate every 60 seconds
+export const revalidate = 60
 
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
-  return await client.fetch(query)
+  return await client.fetch(query, {}, { next: { revalidate: 3600 } }) // Cache for 1 hour
 }
 
 async function getHomepage() {
@@ -20,7 +21,7 @@ async function getHomepage() {
       asset->
     }
   }`
-  return await client.fetch(query)
+  return await client.fetch(query, {}, { next: { revalidate: 60 } })
 }
 
 async function getHomeEvents() {
@@ -35,7 +36,22 @@ async function getHomeEvents() {
     additionalInfo,
     image
   }[0...6]`
-  return await client.fetch(query)
+  return await client.fetch(query, {}, { next: { revalidate: 300 } }) // Cache for 5 minutes
+}
+
+export async function generateMetadata() {
+  const homepage = await getHomepage()
+  const imageUrl = homepage?.heroImage ? urlFor(homepage.heroImage).width(1200).quality(85).url() : null
+
+  return {
+    title: homepage?.heroHeading || 'TD Church',
+    description: homepage?.heroSubheading || 'Welcome to TD Church',
+    openGraph: {
+      title: homepage?.heroHeading || 'TD Church',
+      description: homepage?.heroSubheading || 'Welcome to TD Church',
+      images: imageUrl ? [{ url: imageUrl }] : [],
+    },
+  }
 }
 
 export default async function Home() {
@@ -45,20 +61,8 @@ export default async function Home() {
     getHomeEvents(),
   ])
 
-  // Get video and image URLs for preloading
-  const videoUrl = homepage?.heroVideoUrl || homepage?.heroVideoFile?.asset?.url
-  const imageUrl = homepage?.heroImage ? urlFor(homepage.heroImage).width(1920).quality(80).url() : null
-
   return (
     <>
-      {/* Preload critical resources */}
-      {videoUrl && (
-        <link rel="preload" as="video" href={videoUrl} />
-      )}
-      {imageUrl && (
-        <link rel="preload" as="image" href={imageUrl} />
-      )}
-      
       <Header siteSettings={siteSettings} />
       <main>
         <Hero homepage={homepage} events={events} />

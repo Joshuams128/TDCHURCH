@@ -17,11 +17,12 @@ export default function Header({ siteSettings }) {
           <Link href="/" className="logo">
             {siteSettings?.logo && (
               <Image
-                src={urlFor(siteSettings.logo).url()}
+                src={urlFor(siteSettings.logo).width(240).height(120).quality(90).url()}
                 alt={siteSettings.siteName || 'Logo'}
                 width={120}
                 height={60}
                 style={{ objectFit: 'contain' }}
+                priority
               />
             )}
           </Link>

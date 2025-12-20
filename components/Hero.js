@@ -8,7 +8,7 @@ export default function Hero({ homepage, events }) {
   const videoSource = videoUrl || videoFile
   
   // Get poster image for video
-  const posterImage = homepage?.heroImage ? urlFor(homepage.heroImage).width(1920).quality(80).url() : null
+  const posterImage = homepage?.heroImage ? urlFor(homepage.heroImage).width(1920).quality(75).url() : null
 
   return (
     <section className="hero">
@@ -20,9 +20,10 @@ export default function Hero({ homepage, events }) {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             poster={posterImage}
             className="hero-video"
+            loading="lazy"
           >
             <source src={videoSource} type="video/mp4" />
             Your browser does not support the video tag.
@@ -34,12 +35,14 @@ export default function Hero({ homepage, events }) {
       {!videoSource && homepage?.heroImage && (
         <div className="hero-background" style={{ position: 'relative', width: '100%', height: '100%' }}>
           <Image
-            src={urlFor(homepage.heroImage).width(1920).quality(80).url()}
+            src={urlFor(homepage.heroImage).width(1920).quality(75).url()}
             alt={homepage.heroHeading || 'Hero background'}
             fill
             priority
             style={{ objectFit: 'cover' }}
             sizes="100vw"
+            placeholder="blur"
+            blurDataURL={urlFor(homepage.heroImage).width(20).quality(20).url()}
           />
         </div>
       )}
@@ -75,11 +78,12 @@ export default function Hero({ homepage, events }) {
                   {event.image && (
                     <div className="hero-event-image">
                       <Image
-                        src={urlFor(event.image).url()}
+                        src={urlFor(event.image).width(80).height(80).quality(85).url()}
                         alt={event.eventTitle}
                         width={40}
                         height={40}
                         style={{ objectFit: 'cover', borderRadius: '50%' }}
+                        loading="lazy"
                       />
                     </div>
                   )}
