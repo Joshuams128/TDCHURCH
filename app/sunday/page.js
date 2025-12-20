@@ -81,11 +81,11 @@ export default async function SundayPage() {
         </section>
 
         {/* Locations Section */}
-        {sunday?.locations && sunday.locations.length > 0 && (
+        {sunday?.location && sunday.location.length > 0 && (
           <section className="locations-section">
             <h2 className="locations-heading">OUR LOCATION</h2>
             <div className="locations-grid">
-              {sunday.locations.map((location, index) => (
+              {sunday.location.map((location, index) => (
                 <div key={index} className="location-card">
                   {location.image && (
                     <div className="location-image">
@@ -104,6 +104,62 @@ export default async function SundayPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+        )}
+
+        {/* C3 Kids Section */}
+        {(sunday?.kidsHeading || sunday?.kidsDescription) && (
+          <section className="sunday-kids-section">
+            <div className="sunday-kids-container">
+              <div className="sunday-kids-images">
+                {sunday?.kidsImage1 && (
+                  <div className="sunday-kids-image sunday-kids-image-1">
+                    <Image
+                      src={urlFor(sunday.kidsImage1).url()}
+                      alt="C3 Kids"
+                      width={350}
+                      height={400}
+                      style={{ objectFit: 'cover', borderRadius: '12px' }}
+                    />
+                  </div>
+                )}
+                {sunday?.kidsImage2 && (
+                  <div className="sunday-kids-image sunday-kids-image-2">
+                    <Image
+                      src={urlFor(sunday.kidsImage2).url()}
+                      alt="C3 Kids"
+                      width={350}
+                      height={400}
+                      style={{ objectFit: 'cover', borderRadius: '12px' }}
+                    />
+                  </div>
+                )}
+                {sunday?.kidsImage3 && (
+                  <div className="sunday-kids-image sunday-kids-image-3">
+                    <Image
+                      src={urlFor(sunday.kidsImage3).url()}
+                      alt="C3 Kids"
+                      width={350}
+                      height={400}
+                      style={{ objectFit: 'cover', borderRadius: '12px' }}
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="sunday-kids-content">
+                {sunday?.kidsHeading && (
+                  <h2 className="sunday-kids-heading">{sunday.kidsHeading}</h2>
+                )}
+                {sunday?.kidsDescription && (
+                  <p className="sunday-kids-description">{sunday.kidsDescription}</p>
+                )}
+                {sunday?.kidsButtonText && sunday?.kidsButtonLink && (
+                  <a href={sunday.kidsButtonLink} className="sunday-kids-button">
+                    {sunday.kidsButtonText}
+                  </a>
+                )}
+              </div>
             </div>
           </section>
         )}

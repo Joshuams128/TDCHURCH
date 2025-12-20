@@ -645,8 +645,87 @@ body {
 
 /* About Us Page */
 .about-page {
-  padding-top: 80px;
   min-height: 100vh;
+  background: white;
+}
+
+/* Main Intro Section */
+.about-main-section {
+  padding: 6rem 3rem;
+  background: white;
+}
+
+.about-main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-main-content {
+  padding-right: 2rem;
+}
+
+.about-main-heading {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #000;
+  margin-bottom: 2rem;
+  letter-spacing: -1px;
+}
+
+.about-main-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.about-main-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.about-main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 968px) {
+  .about-main-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-main-content {
+    padding-right: 0;
+  }
+
+  .about-main-image {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-main-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .about-main-heading {
+    font-size: 2.5rem;
+  }
+
+  .about-main-image {
+    min-height: 350px;
+  }
 }
 
 /* Hero Section with Image */
@@ -774,27 +853,247 @@ body {
 
 /* Pastors Section */
 .about-pastors-section {
-  padding: 5rem 2rem;
-  background: #f9f9f9;
+  padding: 6rem 3rem;
+  background: #f5f5f5;
 }
 
 .about-pastors-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-pastors-content {
+  padding-right: 2rem;
+}
+
+.about-pastors-heading {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #000;
+  margin-bottom: 2rem;
+  letter-spacing: -1px;
+}
+
+.about-pastors-text {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.about-pastors-text:last-child {
+  margin-bottom: 0;
+}
+
+.about-pastors-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.about-pastors-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 968px) {
+  .about-pastors-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-pastors-content {
+    padding-right: 0;
+  }
+
+  .about-pastors-image {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-pastors-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .about-pastors-heading {
+    font-size: 2.5rem;
+  }
+
+  .about-pastors-image {
+    min-height: 350px;
+  }
+}
+
+/* C3 Global Section */
+.about-c3-section {
+  padding: 6rem 3rem;
+  background: white;
+}
+
+.about-c3-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-c3-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.about-c3-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.about-c3-content {
+  padding-left: 2rem;
+}
+
+.about-c3-heading {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #000;
+  margin-bottom: 2rem;
+  letter-spacing: -1px;
+}
+
+.about-c3-text {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.about-c3-text:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 968px) {
+  .about-c3-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-c3-content {
+    padding-left: 0;
+  }
+
+  .about-c3-image {
+    min-height: 400px;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-c3-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .about-c3-heading {
+    font-size: 2.5rem;
+  }
+
+  .about-c3-image {
+    min-height: 350px;
+  }
+}
+
+/* Our Vision Section */
+.about-vision-section {
+  padding: 6rem 3rem;
+  background: #f5f5f5;
+}
+
+.about-vision-container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.about-section-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 3rem;
-  color: #000;
+.about-vision-header {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
-.about-pastors-grid {
+.about-vision-heading {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  text-transform: capitalize;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.about-vision-subheading {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  color: #333;
+}
+
+.about-vision-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 3rem;
+  align-items: start;
+  justify-content: center;
+}
+
+.about-vision-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: fit-content;
+}
+
+.about-vision-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.about-vision-title {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.about-vision-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .about-vision-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .about-vision-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 .about-pastor-card {
@@ -1116,6 +1415,136 @@ body {
   color: #000;
   font-weight: 600;
   line-height: 1.5;
+}
+
+/* C3 Kids Section */
+.sunday-kids-section {
+  padding: 6rem 3rem;
+  background: white;
+}
+
+.sunday-kids-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.sunday-kids-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+}
+
+.sunday-kids-image {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sunday-kids-image-1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sunday-kids-image-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.sunday-kids-image-3 {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-self: center;
+  max-width: 500px;
+}
+
+.sunday-kids-content {
+  padding-left: 2rem;
+}
+
+.sunday-kids-heading {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #000;
+  margin-bottom: 2rem;
+  letter-spacing: -1px;
+}
+
+.sunday-kids-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.sunday-kids-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.sunday-kids-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: #333;
+}
+
+@media (max-width: 968px) {
+  .sunday-kids-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .sunday-kids-images {
+    order: -1;
+  }
+
+  .sunday-kids-content {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sunday-kids-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .sunday-kids-images {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .sunday-kids-image-1,
+  .sunday-kids-image-2,
+  .sunday-kids-image-3 {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .sunday-kids-image-1 {
+    grid-row: 1;
+  }
+
+  .sunday-kids-image-2 {
+    grid-row: 2;
+  }
+
+  .sunday-kids-image-3 {
+    grid-row: 3;
+  }
 }
 
 @media (max-width: 768px) {

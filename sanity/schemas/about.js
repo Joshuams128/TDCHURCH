@@ -3,135 +3,124 @@ export default {
   title: 'About Us',
   type: 'document',
   fields: [
-    // Hero Section
+    // First Section - Main Intro
     {
-      name: 'heroImage',
-      title: 'Hero Image',
+      name: 'mainHeading',
+      title: 'Main Heading',
+      type: 'string',
+      description: 'Large heading for the first section (e.g., "CONNECTING PEOPLE TO GOD")',
+    },
+    {
+      name: 'mainDescription',
+      title: 'Main Description',
+      type: 'text',
+      rows: 6,
+      description: 'Descriptive text for the first section',
+    },
+    {
+      name: 'mainImage',
+      title: 'Main Section Image',
       type: 'image',
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'heroHeading',
-      title: 'Hero Heading',
-      type: 'string',
-    },
-    
-    // Mission Statement Section
-    {
-      name: 'missionStatement',
-      title: 'Mission Statement',
-      type: 'text',
-      rows: 4,
-    },
-    
-    // Welcome Section
-    {
-      name: 'welcomeImage',
-      title: 'Welcome Section Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'welcomeHeading',
-      title: 'Welcome Heading',
-      type: 'string',
-    },
-    {
-      name: 'welcomeText',
-      title: 'Welcome Text',
-      type: 'text',
-      rows: 4,
-    },
-    {
-      name: 'welcomeButtonText',
-      title: 'Welcome Button Text',
-      type: 'string',
-    },
-    {
-      name: 'welcomeButtonLink',
-      title: 'Welcome Button Link',
-      type: 'string',
+      description: 'Image displayed on the right side of the first section',
     },
     
     // Pastors Section
     {
-      name: 'pastors',
-      title: 'Pastors',
+      name: 'pastorsHeading',
+      title: 'Pastors Section Heading',
+      type: 'string',
+      description: 'e.g., "OUR PASTORS"',
+    },
+    {
+      name: 'pastorsText1',
+      title: 'Pastors Text - Paragraph 1',
+      type: 'text',
+      rows: 4,
+    },
+    {
+      name: 'pastorsText2',
+      title: 'Pastors Text - Paragraph 2',
+      type: 'text',
+      rows: 4,
+    },
+    {
+      name: 'pastorsImage',
+      title: 'Pastors Section Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    
+    // C3 Global Section
+    {
+      name: 'c3GlobalHeading',
+      title: 'Mission Statement - C3 Global Heading',
+      type: 'string',
+      description: 'e.g., "C3 GLOBAL"',
+    },
+    {
+      name: 'c3GlobalText1',
+      title: 'Mission Statement - C3 Global Text 1',
+      type: 'text',
+      rows: 4,
+    },
+    {
+      name: 'c3GlobalText2',
+      title: 'Mission Statement - C3 Global Text 2',
+      type: 'text',
+      rows: 4,
+    },
+    {
+      name: 'c3GlobalText3',
+      title: 'Mission Statement - C3 Global Text 3',
+      type: 'text',
+      rows: 4,
+    },
+    {
+      name: 'c3GlobalImage',
+      title: 'Mission Statement - C3 Global Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    
+    // Our Vision Section
+    {
+      name: 'visionHeading',
+      title: 'Our Vision - Main Heading',
+      type: 'string',
+      description: 'e.g., "Our Vision"',
+    },
+    {
+      name: 'visionSubheading',
+      title: 'Our Vision - Subheading',
+      type: 'string',
+      description: 'e.g., "2 Corinthians 5:7"',
+    },
+    {
+      name: 'visionItems',
+      title: 'Our Vision - Items',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
-            {
-              name: 'name',
-              title: 'Name',
-              type: 'string',
-            },
             {
               name: 'title',
               title: 'Title',
               type: 'string',
+              description: 'e.g., "Discipleship:", "Church Planting:"',
             },
             {
-              name: 'bio',
-              title: 'Bio',
+              name: 'content',
+              title: 'Content',
               type: 'text',
-              rows: 4,
-            },
-            {
-              name: 'image',
-              title: 'Image',
-              type: 'image',
-              options: {
-                hotspot: true,
-              },
-            },
-          ],
-        },
-      ],
-    },
-    
-    // Mission Section
-    {
-      name: 'missionTitle',
-      title: 'Mission Section Title',
-      type: 'string',
-    },
-    {
-      name: 'missionContent',
-      title: 'Mission Content',
-      type: 'text',
-      rows: 4,
-    },
-    
-    // Vision Section
-    {
-      name: 'visionTitle',
-      title: 'Vision Section Title',
-      type: 'string',
-    },
-    {
-      name: 'visionItems',
-      title: 'Vision Items',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'heading',
-              title: 'Heading',
-              type: 'string',
-            },
-            {
-              name: 'text',
-              title: 'Text',
-              type: 'text',
-              rows: 3,
+              rows: 6,
             },
           ],
         },
