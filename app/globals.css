@@ -279,6 +279,107 @@ body {
   border-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Hero Events Section */
+.hero-events {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 0.5rem 1rem 1rem;
+}
+
+.hero-events-container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.hero-events-title {
+  font-size: clamp(1rem, 2vw, 1.75rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-events-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.hero-events-scroll::-webkit-scrollbar {
+  height: 3px;
+}
+
+.hero-events-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hero-events-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.hero-event-card {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  min-width: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.hero-event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero-event-image {
+  flex-shrink: 0;
+}
+
+.hero-event-content {
+  flex: 1;
+}
+
+.hero-event-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+
+.hero-event-date {
+  font-size: 0.65rem;
+  color: #666;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 768px) {
+  .hero-events {
+    padding: 0.5rem 0.75rem 0.75rem;
+  }
+
+  .hero-event-card {
+    min-width: 180px;
+    padding: 0.25rem 0.65rem;
+  }
+}
+
 /* Responsive Design */
 /* Services Page Styles */
 .services-page {
@@ -1751,7 +1852,156 @@ body {
   }
 }
 
-/* Schedule Page Styles */
+/* Homepage Events Section - REMOVED (now in Hero) */
+
+/* Schedule Fullscreen Popup */
+.schedule-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.schedule-fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2c1654 0%, #1a0d2e 100%);
+  z-index: -1;
+}
+
+.schedule-fullscreen-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 3rem 4rem;
+}
+
+.schedule-fullscreen-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 4rem;
+  letter-spacing: 2px;
+}
+
+.schedule-section {
+  margin-bottom: 4rem;
+}
+
+/* Ongoing Events Grid */
+.schedule-events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.schedule-ongoing-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.schedule-ongoing-card:hover {
+  transform: translateY(-5px);
+}
+
+.schedule-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.schedule-card-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.schedule-card-details {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+}
+
+.schedule-card-time,
+.schedule-card-location,
+.schedule-card-info {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* Special Events Grid */
+.schedule-special-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.schedule-special-card {
+  position: relative;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.schedule-special-card:hover {
+  transform: translateY(-5px);
+}
+
+.schedule-special-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.schedule-special-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  padding: 2rem;
+  color: white;
+}
+
+.schedule-special-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.schedule-special-date {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .schedule-fullscreen-content {
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .schedule-events-grid,
+  .schedule-special-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Old Schedule Page Styles (kept for backwards compatibility) */
 .schedule-page {
   padding: 120px 2rem 4rem;
   min-height: 100vh;

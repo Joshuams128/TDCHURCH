@@ -11,10 +11,12 @@ async function getSchedule() {
   const query = `*[_type == "schedule"] | order(eventDate asc) {
     _id,
     eventTitle,
+    eventType,
     eventDate,
     eventTime,
     location,
     description,
+    additionalInfo,
     image,
     featured
   }`
@@ -27,106 +29,85 @@ export default async function SchedulePage() {
     getSchedule(),
   ])
 
-  // Separate upcoming and past events
+  // Separate ongoing and special events
+  const ongoingEvents = scheduleEvents.filter((event) => event.eventType === 'ongoing')
+  const specialEvents = scheduleEvents.filter((event) => event.eventType === 'special')
+  
+  // Filter special events by upcoming/past
   const now = new Date()
-  const upcomingEvents = scheduleEvents.filter(
-    (event) => new Date(event.eventDate) >= now
-  )
-  const pastEvents = scheduleEvents.filter(
-    (event) => new Date(event.eventDate) < now
+  const upcomingSpecial = specialEvents.filter(
+    (event) => event.eventDate && new Date(event.eventDate) >= now
   )
 
   return (
     <>
-      <Header siteSettings={siteSettings} />
-      <main className="schedule-page">
-        <div className="schedule-container">
-          <h1 className="schedule-title">Coming Up</h1>
+      <div className="schedule-fullscreen">
+        <div className="schedule-fullscreen-overlay" />
+        <div className="schedule-fullscreen-content">
+          <h1 className="schedule-fullscreen-title">COMING UP AT C3</h1>
           
-          {upcomingEvents.length > 0 ? (
-            <div className="events-grid">
-              {upcomingEvents.map((event) => (
-                <div 
-                  key={event._id} 
-                  className={`event-card ${event.featured ? 'featured' : ''}`}
-                >
-                  {event.image && (
-                    <div className="event-image">
-                      <Image
-                        src={urlFor(event.image).url()}
-                        alt={event.eventTitle}
-                        width={600}
-                        height={400}
-                        style={{ objectFit: 'cover' }}
-                      />
-                    </div>
-                  )}
-                  <div className="event-content">
-                    {event.featured && (
-                      <span className="featured-badge">Featured</span>
+          {/* Ongoing Events Section */}
+          {ongoingEvents.length > 0 && (
+            <div className="schedule-section">
+              <div className="schedule-events-grid">
+                {ongoingEvents.map((event) => (
+                  <div key={event._id} className="schedule-ongoing-card">
+                    <h3 className="schedule-card-title">{event.eventTitle}</h3>
+                    {event.description && (
+                      <p className="schedule-card-description">{event.description}</p>
                     )}
-                    <h2 className="event-title">{event.eventTitle}</h2>
-                    <div className="event-details">
-                      <p className="event-date">
-                        📅 {new Date(event.eventDate).toLocaleDateString('en-US', {
-                          weekday: 'long',
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })}
-                      </p>
+                    <div className="schedule-card-details">
                       {event.eventTime && (
-                        <p className="event-time">🕐 {event.eventTime}</p>
+                        <p className="schedule-card-time">{event.eventTime}</p>
                       )}
                       {event.location && (
-                        <p className="event-location">📍 {event.location}</p>
+                        <p className="schedule-card-location">{event.location}</p>
                       )}
-                    </div>
-                    {event.description && (
-                      <p className="event-description">{event.description}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="no-events">No upcoming events scheduled at this time.</p>
-          )}
-
-          {pastEvents.length > 0 && (
-            <>
-              <h2 className="past-events-title">Past Events</h2>
-              <div className="events-grid past-events">
-                {pastEvents.slice(0, 6).map((event) => (
-                  <div key={event._id} className="event-card past">
-                    {event.image && (
-                      <div className="event-image">
-                        <Image
-                          src={urlFor(event.image).url()}
-                          alt={event.eventTitle}
-                          width={600}
-                          height={400}
-                          style={{ objectFit: 'cover' }}
-                        />
-                      </div>
-                    )}
-                    <div className="event-content">
-                      <h3 className="event-title">{event.eventTitle}</h3>
-                      <p className="event-date">
-                        {new Date(event.eventDate).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        })}
-                      </p>
+                      {event.additionalInfo && (
+                        <p className="schedule-card-info">{event.additionalInfo}</p>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
-            </>
+            </div>
+          )}
+
+          {/* Special Events Section */}
+          {upcomingSpecial.length > 0 && (
+            <div className="schedule-section">
+              <div className="schedule-special-grid">
+                {upcomingSpecial.map((event) => (
+                  <div key={event._id} className="schedule-special-card">
+                    {event.image && (
+                      <div className="schedule-special-image">
+                        <Image
+                          src={urlFor(event.image).url()}
+                          alt={event.eventTitle}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                        />
+                      </div>
+                    )}
+                    <div className="schedule-special-overlay">
+                      <h3 className="schedule-special-title">{event.eventTitle}</h3>
+                      {event.eventDate && (
+                        <p className="schedule-special-date">
+                          {new Date(event.eventDate).toLocaleDateString('en-US', {
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
-      </main>
+      </div>
     </>
   )
 }

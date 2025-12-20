@@ -2,6 +2,8 @@ import { client } from '@/lib/sanity'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import { urlFor } from '@/lib/sanity'
+import Image from 'next/image'
+import Link from 'next/link'
 
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
@@ -21,10 +23,26 @@ async function getHomepage() {
   return await client.fetch(query)
 }
 
+async function getHomeEvents() {
+  const query = `*[_type == "schedule" && showOnHomepage == true] | order(eventDate asc) {
+    _id,
+    eventTitle,
+    eventType,
+    eventDate,
+    eventTime,
+    location,
+    description,
+    additionalInfo,
+    image
+  }[0...6]`
+  return await client.fetch(query)
+}
+
 export default async function Home() {
-  const [siteSettings, homepage] = await Promise.all([
+  const [siteSettings, homepage, events] = await Promise.all([
     getSiteSettings(),
     getHomepage(),
+    getHomeEvents(),
   ])
 
   // Get video and image URLs for preloading
@@ -43,7 +61,7 @@ export default async function Home() {
       
       <Header siteSettings={siteSettings} />
       <main>
-        <Hero homepage={homepage} />
+        <Hero homepage={homepage} events={events} />
       </main>
     </>
   )

@@ -1,7 +1,7 @@
 import { urlFor } from '@/lib/sanity'
 import Image from 'next/image'
 
-export default function Hero({ homepage }) {
+export default function Hero({ homepage, events }) {
   // Determine video source
   const videoUrl = homepage?.heroVideoUrl
   const videoFile = homepage?.heroVideoFile?.asset?.url
@@ -63,6 +63,44 @@ export default function Hero({ homepage }) {
           </a>
         )}
       </div>
+
+      {/* Coming Up Events */}
+      {events && events.length > 0 && (
+        <div className="hero-events">
+          <div className="hero-events-container">
+            <h2 className="hero-events-title">COMING UP</h2>
+            <div className="hero-events-scroll">
+              {events.map((event) => (
+                <div key={event._id} className="hero-event-card">
+                  {event.image && (
+                    <div className="hero-event-image">
+                      <Image
+                        src={urlFor(event.image).url()}
+                        alt={event.eventTitle}
+                        width={40}
+                        height={40}
+                        style={{ objectFit: 'cover', borderRadius: '50%' }}
+                      />
+                    </div>
+                  )}
+                  <div className="hero-event-content">
+                    <h3 className="hero-event-title">{event.eventTitle}</h3>
+                    {event.eventDate && event.eventType === 'special' && (
+                      <p className="hero-event-date">
+                        {new Date(event.eventDate).toLocaleDateString('en-US', {
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
