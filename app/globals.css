@@ -276,6 +276,11 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .logo img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
   .nav-top-row {
     flex-direction: column;
     gap: 1.5rem;
@@ -496,6 +501,7 @@ body {
 @media (max-width: 768px) {
   .hero-events {
     padding: 0.5rem 0.75rem 0.75rem;
+    bottom: 2rem;
   }
 
   .hero-event-card {
