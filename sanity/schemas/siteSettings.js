@@ -53,6 +53,18 @@ export default {
       ],
     },
     {
+      name: 'instagramUrl',
+      title: 'Instagram URL',
+      type: 'url',
+      description: 'Your Instagram profile URL',
+    },
+    {
+      name: 'tiktokUrl',
+      title: 'TikTok URL',
+      type: 'url',
+      description: 'Your TikTok profile URL',
+    },
+    {
       name: 'socialLinks',
       title: 'Social Links',
       type: 'array',
