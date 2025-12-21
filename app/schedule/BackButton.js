@@ -1,15 +1,16 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function BackButton() {
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
 
   return (
-    <Link 
-      href="/" 
+    <button
+      onClick={() => router.back()}
       className="schedule-back-button"
       style={{
         position: 'absolute',
@@ -17,24 +18,25 @@ export default function BackButton() {
         left: '2rem',
         display: 'flex',
         alignItems: 'center',
-        gap: '0.5rem',
+        justifyContent: 'center',
         color: 'white',
         fontSize: '1rem',
         fontWeight: '600',
         textDecoration: 'none',
         background: isHovered ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)',
-        padding: '0.75rem 1.5rem',
-        borderRadius: '50px',
+        padding: '0.75rem',
+        borderRadius: '50%',
         transition: 'all 0.3s ease',
         backdropFilter: 'blur(10px)',
         border: '1px solid rgba(255, 255, 255, 0.2)',
-        transform: isHovered ? 'translateX(-5px)' : 'translateX(0)'
+        cursor: 'pointer',
+        width: '48px',
+        height: '48px',
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <ArrowLeft size={20} />
-      <span>Back</span>
-    </Link>
+      <X size={24} />
+    </button>
   );
 }

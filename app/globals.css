@@ -79,16 +79,27 @@ body {
 }
 
 .coming-up {
+  background: white;
+  border: none;
+  color: black;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
+  justify-content: center;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.coming-up:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 
 .calendar-icon {
-  color: white;
+  color: black;
 }
 
 .hamburger {
@@ -563,12 +574,13 @@ body {
   }
 
   .coming-up {
-    font-size: 0.875rem;
+    width: 44px;
+    height: 44px;
   }
 
   .calendar-icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .hero-heading {

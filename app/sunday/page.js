@@ -58,16 +58,6 @@ export default async function SundayPage() {
                     </div>
                   )}
                   <div className="sermon-content">
-                    <div className="sermon-icon">
-                      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                        <path
-                          d="M30 50C41.0457 50 50 41.0457 50 30C50 18.9543 41.0457 10 30 10C18.9543 10 10 18.9543 10 30C10 41.0457 18.9543 50 30 50Z"
-                          fill="white"
-                        />
-                        <path d="M25 20L40 30L25 40V20Z" fill="black" />
-                      </svg>
-                    </div>
-                    <div className="sermon-label">SUNDAY PLAYBACK</div>
                     <h3 className="sermon-preacher">
                       {sunday.featuredSermon.preacher}
                     </h3>

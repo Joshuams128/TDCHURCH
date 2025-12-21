@@ -35,9 +35,8 @@ export default function Header({ siteSettings, upcomingEvent }) {
           <div className="right-section">
             {/* Coming Up Schedule */}
             {upcomingEvent && (
-              <Link href="/schedule" className="coming-up" style={{ background: 'rgba(0, 0, 0, 0.6)', padding: '0.5rem 1rem', borderRadius: '8px' }}>
-                <Calendar className="calendar-icon" size={20} />
-                <span>Coming Up: {upcomingEvent.eventTitle}</span>
+              <Link href="/schedule" className="coming-up">
+                <Calendar className="calendar-icon" size={24} />
               </Link>
             )}
 
