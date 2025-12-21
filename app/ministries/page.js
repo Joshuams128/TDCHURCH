@@ -1,4 +1,5 @@
 import { client, urlFor } from '@/lib/sanity'
+import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
 import Image from 'next/image'
 
@@ -38,7 +39,9 @@ export default async function MinistriesPage() {
               <h1 className="page-heading">{ministries.heading}</h1>
             )}
             {ministries?.subheading && (
-              <p className="page-subheading">{ministries.subheading}</p>
+              <div className="page-subheading">
+                <PortableText value={ministries.subheading} />
+              </div>
             )}
           </div>
         </section>
@@ -61,7 +64,9 @@ export default async function MinistriesPage() {
                   )}
                   <div className="ministry-content">
                     <h3>{ministry.title}</h3>
-                    <p>{ministry.description}</p>
+                    <div>
+                      <PortableText value={ministry.description} />
+                    </div>
                   </div>
                 </div>
               ))}

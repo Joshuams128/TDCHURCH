@@ -11,7 +11,8 @@ export default {
     {
       name: 'subheading',
       title: 'Subheading',
-      type: 'text',
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'ministryList',
@@ -29,7 +30,8 @@ export default {
             {
               name: 'description',
               title: 'Description',
-              type: 'text',
+              type: 'array',
+              of: [{ type: 'block' }],
             },
             {
               name: 'image',

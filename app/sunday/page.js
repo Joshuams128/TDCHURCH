@@ -1,4 +1,5 @@
 import { client, urlFor } from '@/lib/sanity'
+import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
 import Image from 'next/image'
 
@@ -40,7 +41,9 @@ export default async function SundayPage() {
                 <h1 className="sunday-main-heading">{sunday.heading}</h1>
               )}
               {sunday?.description && (
-                <p className="sunday-description">{sunday.description}</p>
+                <div className="sunday-description">
+                  <PortableText value={sunday.description} />
+                </div>
               )}
             </div>
 
@@ -99,7 +102,9 @@ export default async function SundayPage() {
                   )}
                   <div className="location-info">
                     <h3>{location.name}</h3>
-                    <p className="location-address">{location.address}</p>
+                    <div className="location-address">
+                      <PortableText value={location.address} />
+                    </div>
                     <p className="location-time">{location.serviceTime}</p>
                   </div>
                 </div>
@@ -152,7 +157,9 @@ export default async function SundayPage() {
                   <h2 className="sunday-kids-heading">{sunday.kidsHeading}</h2>
                 )}
                 {sunday?.kidsDescription && (
-                  <p className="sunday-kids-description">{sunday.kidsDescription}</p>
+                  <div className="sunday-kids-description">
+                    <PortableText value={sunday.kidsDescription} />
+                  </div>
                 )}
                 {sunday?.kidsButtonText && sunday?.kidsButtonLink && (
                   <a href={sunday.kidsButtonLink} className="sunday-kids-button">

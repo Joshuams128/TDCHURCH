@@ -1,4 +1,5 @@
 import { client, urlFor } from '@/lib/sanity'
+import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
 import Image from 'next/image'
 
@@ -59,13 +60,15 @@ export default async function BeliefsPage() {
             <div className="beliefs-conduct-container">
               <h2 className="beliefs-conduct-heading">{beliefs.conductHeading}</h2>
               {beliefs?.conductIntro && (
-                <p className="beliefs-conduct-intro">{beliefs.conductIntro}</p>
+                <div className="beliefs-conduct-intro">
+                  <PortableText value={beliefs.conductIntro} />
+                </div>
               )}
               {beliefs?.conductRules && beliefs.conductRules.length > 0 && (
                 <ol className="beliefs-conduct-list">
                   {beliefs.conductRules.map((item, index) => (
                     <li key={index} className="beliefs-conduct-item">
-                      {item.rule}
+                      <PortableText value={item.rule} />
                     </li>
                   ))}
                 </ol>
@@ -84,7 +87,9 @@ export default async function BeliefsPage() {
                   {beliefs.faithStatements.map((statement, index) => (
                     <div key={index} className="beliefs-faith-card">
                       <h3 className="beliefs-faith-title">{statement.title}</h3>
-                      <p className="beliefs-faith-description">{statement.description}</p>
+                      <div className="beliefs-faith-description">
+                        <PortableText value={statement.description} />
+                      </div>
                     </div>
                   ))}
                 </div>

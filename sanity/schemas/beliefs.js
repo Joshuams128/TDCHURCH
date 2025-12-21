@@ -29,8 +29,8 @@ export default {
     {
       name: 'conductIntro',
       title: 'Rules of Conduct - Introduction',
-      type: 'text',
-      rows: 3,
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'conductRules',
@@ -43,8 +43,8 @@ export default {
             {
               name: 'rule',
               title: 'Rule',
-              type: 'text',
-              rows: 2,
+              type: 'array',
+              of: [{ type: 'block' }],
             },
           ],
         },
@@ -75,8 +75,8 @@ export default {
             {
               name: 'description',
               title: 'Description',
-              type: 'text',
-              rows: 3,
+              type: 'array',
+              of: [{ type: 'block' }],
             },
           ],
         },

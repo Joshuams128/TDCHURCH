@@ -13,8 +13,8 @@ export default {
     {
       name: 'mainDescription',
       title: 'Main Description',
-      type: 'text',
-      rows: 6,
+      type: 'array',
+      of: [{ type: 'block' }],
       description: 'Descriptive text for the first section',
     },
     {
@@ -37,14 +37,14 @@ export default {
     {
       name: 'pastorsText1',
       title: 'Pastors Text - Paragraph 1',
-      type: 'text',
-      rows: 4,
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'pastorsText2',
       title: 'Pastors Text - Paragraph 2',
-      type: 'text',
-      rows: 4,
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'pastorsImage',
@@ -65,20 +65,20 @@ export default {
     {
       name: 'c3GlobalText1',
       title: 'Mission Statement - C3 Global Text 1',
-      type: 'text',
-      rows: 4,
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'c3GlobalText2',
       title: 'Mission Statement - C3 Global Text 2',
-      type: 'text',
-      rows: 4,
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'c3GlobalText3',
       title: 'Mission Statement - C3 Global Text 3',
-      type: 'text',
-      rows: 4,
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'c3GlobalImage',
@@ -119,8 +119,8 @@ export default {
             {
               name: 'content',
               title: 'Content',
-              type: 'text',
-              rows: 6,
+              type: 'array',
+              of: [{ type: 'block' }],
             },
           ],
         },

@@ -11,7 +11,8 @@ export default {
     {
       name: 'description',
       title: 'Description',
-      type: 'text',
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'featuredSermon',
@@ -59,7 +60,8 @@ export default {
             {
               name: 'address',
               title: 'Address',
-              type: 'text',
+              type: 'array',
+              of: [{ type: 'block' }],
             },
             {
               name: 'serviceTime',

@@ -1,4 +1,5 @@
 import { client, urlFor } from '@/lib/sanity'
+import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
 import Image from 'next/image'
 
@@ -41,7 +42,9 @@ export default async function AboutPage() {
                   <h1 className="about-main-heading">{about.mainHeading}</h1>
                 )}
                 {about?.mainDescription && (
-                  <p className="about-main-description">{about.mainDescription}</p>
+                  <div className="about-main-description">
+                    <PortableText value={about.mainDescription} />
+                  </div>
                 )}
               </div>
               {about?.mainImage && (
@@ -69,10 +72,14 @@ export default async function AboutPage() {
                   <h2 className="about-pastors-heading">{about.pastorsHeading}</h2>
                 )}
                 {about?.pastorsText1 && (
-                  <p className="about-pastors-text">{about.pastorsText1}</p>
+                  <div className="about-pastors-text">
+                    <PortableText value={about.pastorsText1} />
+                  </div>
                 )}
                 {about?.pastorsText2 && (
-                  <p className="about-pastors-text">{about.pastorsText2}</p>
+                  <div className="about-pastors-text">
+                    <PortableText value={about.pastorsText2} />
+                  </div>
                 )}
               </div>
               {about?.pastorsImage && (
@@ -110,13 +117,19 @@ export default async function AboutPage() {
                   <h2 className="about-c3-heading">{about.c3GlobalHeading}</h2>
                 )}
                 {about?.c3GlobalText1 && (
-                  <p className="about-c3-text">{about.c3GlobalText1}</p>
+                  <div className="about-c3-text">
+                    <PortableText value={about.c3GlobalText1} />
+                  </div>
                 )}
                 {about?.c3GlobalText2 && (
-                  <p className="about-c3-text">{about.c3GlobalText2}</p>
+                  <div className="about-c3-text">
+                    <PortableText value={about.c3GlobalText2} />
+                  </div>
                 )}
                 {about?.c3GlobalText3 && (
-                  <p className="about-c3-text">{about.c3GlobalText3}</p>
+                  <div className="about-c3-text">
+                    <PortableText value={about.c3GlobalText3} />
+                  </div>
                 )}
               </div>
             </div>
@@ -143,7 +156,9 @@ export default async function AboutPage() {
                         <h3 className="about-vision-title">{item.title}</h3>
                       )}
                       {item.content && (
-                        <p className="about-vision-content">{item.content}</p>
+                        <div className="about-vision-content">
+                          <PortableText value={item.content} />
+                        </div>
                       )}
                     </div>
                   ))}
