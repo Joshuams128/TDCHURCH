@@ -37,7 +37,12 @@ export default async function SchedulePage() {
   // Filter special events by upcoming/past
   const now = new Date()
   const upcomingSpecial = specialEvents.filter(
-    (event) => event.eventDate && new Date(event.eventDate) >= now
+    (event) => {
+      if (!event.eventDate) return false
+      // Parse the date in EST timezone
+      const eventDate = new Date(event.eventDate)
+      return eventDate >= now
+    }
   )
 
   return (
@@ -67,6 +72,16 @@ export default async function SchedulePage() {
                       </div>
                     )}
                     <h3 className="schedule-card-title">{event.eventTitle}</h3>
+                    {event.eventDate && (
+                      <p className="schedule-card-date">
+                        {new Date(event.eventDate).toLocaleDateString('en-US', {
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric',
+                          timeZone: 'America/New_York',
+                        })}
+                      </p>
+                    )}
                     {event.description && (
                       <p className="schedule-card-description">{event.description}</p>
                     )}
@@ -111,6 +126,7 @@ export default async function SchedulePage() {
                             month: 'long',
                             day: 'numeric',
                             year: 'numeric',
+                            timeZone: 'America/New_York',
                           })}
                         </p>
                       )}

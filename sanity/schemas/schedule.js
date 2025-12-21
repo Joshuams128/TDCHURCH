@@ -25,7 +25,7 @@ export default {
     {
       name: 'eventDate',
       title: 'Event Date',
-      type: 'datetime',
+      type: 'date',
       description: 'Optional for ongoing events, required for special events',
     },
     {
@@ -103,6 +103,7 @@ export default {
           month: 'short',
           day: 'numeric',
           year: 'numeric',
+          timeZone: 'America/New_York',
         })
       }
       return {

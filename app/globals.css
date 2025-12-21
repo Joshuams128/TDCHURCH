@@ -438,17 +438,17 @@ body {
 
 .hero-event-date {
   font-size: 0.65rem;
-  color: #666;
+  color: #000;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.1;
   margin-top: 0.1rem;
 }
 
 .hero-event-time {
   font-size: 0.55rem;
-  color: #888;
-  font-weight: 500;
+  color: #000;
+  font-weight: 700;
   line-height: 1.1;
   margin-top: 0.1rem;
 }
@@ -2123,6 +2123,15 @@ body {
   padding: 0 2.5rem;
 }
 
+.schedule-card-date {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #666;
+  padding: 0 2.5rem;
+  margin-bottom: 1rem;
+}
+
 .schedule-card-details {
   border-top: 1px solid #e0e0e0;
   padding: 1rem 2.5rem 2.5rem;
@@ -2190,7 +2199,12 @@ body {
 
 @media (max-width: 768px) {
   .schedule-fullscreen-content {
-    padding: 4rem 1.5rem 3rem;
+    padding: 8rem 1.5rem 3rem;
+  }
+
+  .schedule-fullscreen-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    margin-bottom: 2rem;
   }
 
   .schedule-events-grid,
