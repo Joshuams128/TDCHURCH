@@ -1,4 +1,5 @@
 import { urlFor } from '@/lib/sanity'
+import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -63,12 +64,15 @@ export default function Hero({ homepage, events }) {
         )}
         
         {homepage?.heroSubheading && (
-          <p 
+          <div 
             className="hero-subheading"
             style={homepage?.heroSubheadingFontSize ? { fontSize: homepage.heroSubheadingFontSize } : {}}
           >
-            {homepage.heroSubheading}
-          </p>
+            {typeof homepage.heroSubheading === 'string' 
+              ? homepage.heroSubheading 
+              : <PortableText value={homepage.heroSubheading} />
+            }
+          </div>
         )}
 
         {homepage?.ctaButtonText && homepage?.ctaButtonLink && (

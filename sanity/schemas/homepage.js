@@ -41,8 +41,7 @@ export default {
     {
       name: 'heroSubheading',
       title: 'Hero Subheading',
-      type: 'array',
-      of: [{ type: 'block' }],
+      type: 'string',
     },
     {
       name: 'heroSubheadingFontSize',
