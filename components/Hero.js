@@ -1,5 +1,6 @@
 import { urlFor } from '@/lib/sanity'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Hero({ homepage, events }) {
   // Determine video source
@@ -74,7 +75,7 @@ export default function Hero({ homepage, events }) {
             <h2 className="hero-events-title">COMING UP</h2>
             <div className="hero-events-scroll">
               {events.map((event) => (
-                <div key={event._id} className="hero-event-card">
+                <Link key={event._id} href="/schedule" className="hero-event-card">
                   {event.image && (
                     <div className="hero-event-image">
                       <Image
@@ -99,7 +100,7 @@ export default function Hero({ homepage, events }) {
                       </p>
                     )}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

@@ -1,6 +1,7 @@
-import { client } from '@/lib/sanity'
+import { client, urlFor } from '@/lib/sanity'
 import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
+import Image from 'next/image'
 
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
@@ -8,7 +9,12 @@ async function getSiteSettings() {
 }
 
 async function getGiving() {
-  const query = '*[_type == "giving"][0]'
+  const query = `*[_type == "giving"][0]{
+    ...,
+    heroImage{
+      asset->
+    }
+  }`
   return await client.fetch(query)
 }
 
@@ -32,14 +38,28 @@ export default async function GivingPage() {
     <>
       <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
       <main className="content-page">
-        <section className="content-hero">
-          <div className="content-container">
-            {giving?.heading && (
-              <h1 className="page-heading">{giving.heading}</h1>
-            )}
-            {giving?.content && (
-              <div className="page-content">
-                <PortableText value={giving.content} />
+        <section className="giving-hero-section">
+          <div className="giving-hero-container">
+            <div className="giving-hero-content">
+              {giving?.heading && (
+                <h1 className="giving-hero-heading">{giving.heading}</h1>
+              )}
+              {giving?.content && (
+                <div className="giving-hero-text">
+                  <PortableText value={giving.content} />
+                </div>
+              )}
+            </div>
+            {giving?.heroImage && (
+              <div className="giving-hero-image">
+                <Image
+                  src={urlFor(giving.heroImage).width(800).quality(90).url()}
+                  alt={giving.heading || 'Giving'}
+                  width={800}
+                  height={600}
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
               </div>
             )}
           </div>

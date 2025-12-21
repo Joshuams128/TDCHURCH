@@ -15,6 +15,12 @@ export default {
       of: [{ type: 'block' }],
     },
     {
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'image',
+      description: 'Large image displayed on the right side of the giving page',
+    },
+    {
       name: 'givingOptions',
       title: 'Giving Options',
       type: 'array',
