@@ -54,11 +54,21 @@ export default function Hero({ homepage, events }) {
       {/* Content */}
       <div className="hero-content">
         {homepage?.heroHeading && (
-          <h1 className="hero-heading">{homepage.heroHeading}</h1>
+          <h1 
+            className="hero-heading"
+            style={homepage?.heroHeadingFontSize ? { fontSize: homepage.heroHeadingFontSize } : {}}
+          >
+            {homepage.heroHeading}
+          </h1>
         )}
         
         {homepage?.heroSubheading && (
-          <p className="hero-subheading">{homepage.heroSubheading}</p>
+          <p 
+            className="hero-subheading"
+            style={homepage?.heroSubheadingFontSize ? { fontSize: homepage.heroSubheadingFontSize } : {}}
+          >
+            {homepage.heroSubheading}
+          </p>
         )}
 
         {homepage?.ctaButtonText && homepage?.ctaButtonLink && (

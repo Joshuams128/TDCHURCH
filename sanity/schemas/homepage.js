@@ -33,9 +33,21 @@ export default {
       type: 'string',
     },
     {
+      name: 'heroHeadingFontSize',
+      title: 'Hero Heading Font Size',
+      type: 'string',
+      description: 'e.g., "3rem", "48px", "4vw" - Leave empty for default size',
+    },
+    {
       name: 'heroSubheading',
       title: 'Hero Subheading',
       type: 'string',
+    },
+    {
+      name: 'heroSubheadingFontSize',
+      title: 'Hero Subheading Font Size',
+      type: 'string',
+      description: 'e.g., "1.5rem", "24px", "2vw" - Leave empty for default size',
     },
     {
       name: 'ctaButtonText',
