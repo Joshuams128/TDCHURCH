@@ -1392,10 +1392,12 @@ body {
 
   .about-pastors-content {
     padding-right: 0;
+    order: 2;
   }
 
   .about-pastors-image {
     min-height: 400px;
+    order: 1;
   }
 }
 
