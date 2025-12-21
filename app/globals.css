@@ -445,6 +445,14 @@ body {
   margin-top: 0.1rem;
 }
 
+.hero-event-time {
+  font-size: 0.55rem;
+  color: #888;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 0.1rem;
+}
+
 @media (max-width: 768px) {
   .hero-events {
     padding: 0.5rem 0.75rem 0.75rem;

@@ -90,7 +90,7 @@ export default function Hero({ homepage, events }) {
                   )}
                   <div className="hero-event-content">
                     <h3 className="hero-event-title">{event.eventTitle}</h3>
-                    {event.eventDate && event.eventType === 'special' && (
+                    {event.eventDate && (
                       <p className="hero-event-date">
                         {new Date(event.eventDate).toLocaleDateString('en-US', {
                           month: 'long',
@@ -98,6 +98,9 @@ export default function Hero({ homepage, events }) {
                           year: 'numeric',
                         })}
                       </p>
+                    )}
+                    {event.eventTime && (
+                      <p className="hero-event-time">{event.eventTime}</p>
                     )}
                   </div>
                 </Link>

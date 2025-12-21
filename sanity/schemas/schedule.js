@@ -26,8 +26,7 @@ export default {
       name: 'eventDate',
       title: 'Event Date',
       type: 'datetime',
-      description: 'For special events only',
-      hidden: ({ document }) => document?.eventType === 'ongoing',
+      description: 'Optional for ongoing events, required for special events',
     },
     {
       name: 'eventTime',
