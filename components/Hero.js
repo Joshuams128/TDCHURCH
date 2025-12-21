@@ -16,16 +16,16 @@ export default function Hero({ homepage, events }) {
     <section className="hero">
       {/* Background Video */}
       {videoSource && (
-        <div className="hero-background">
+        <div className="hero-background" style={{ backgroundColor: '#000' }}>
           <video
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             poster={posterImage}
             className="hero-video"
-            loading="lazy"
+            style={{ opacity: 1 }}
           >
             <source src={videoSource} type="video/mp4" />
             Your browser does not support the video tag.

@@ -4,6 +4,11 @@ import Header from '@/components/Header'
 import Image from 'next/image'
 import Link from 'next/link'
 
+export const metadata = {
+  title: 'Building Fund | TD Church',
+  description: 'Support the TD Church building fund initiative and help us grow our community space.',
+}
+
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
   return await client.fetch(query, {}, { next: { revalidate: 3600 } })

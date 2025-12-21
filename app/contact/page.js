@@ -2,6 +2,11 @@ import { client } from '@/lib/sanity'
 import Header from '@/components/Header'
 import ContactForm from './ContactForm'
 
+export const metadata = {
+  title: 'Contact Us | TD Church',
+  description: 'Get in touch with TD Church. Send us a message and we\'ll get back to you soon.',
+}
+
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
   return await client.fetch(query)

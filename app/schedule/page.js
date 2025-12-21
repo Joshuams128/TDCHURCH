@@ -3,6 +3,11 @@ import Header from '@/components/Header'
 import Image from 'next/image'
 import BackButton from './BackButton'
 
+export const metadata = {
+  title: 'Schedule & Events | TD Church',
+  description: 'View upcoming events, special services, and ongoing programs at TD Church.',
+}
+
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
   return await client.fetch(query)

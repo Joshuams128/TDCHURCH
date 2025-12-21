@@ -3,6 +3,11 @@ import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
 import Image from 'next/image'
 
+export const metadata = {
+  title: 'About Us | TD Church',
+  description: 'Learn about TD Church, our pastors, mission, vision, and connection to C3 Global.',
+}
+
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
   return await client.fetch(query)

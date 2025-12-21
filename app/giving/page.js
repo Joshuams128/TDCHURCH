@@ -3,6 +3,11 @@ import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
 import Image from 'next/image'
 
+export const metadata = {
+  title: 'Giving | TD Church',
+  description: 'Support TD Church through online giving, text giving, and other donation options.',
+}
+
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
   return await client.fetch(query)
