@@ -55,6 +55,17 @@ export default async function SchedulePage() {
               <div className="schedule-events-grid">
                 {ongoingEvents.map((event) => (
                   <div key={event._id} className="schedule-ongoing-card">
+                    {event.image && (
+                      <div className="schedule-ongoing-image">
+                        <Image
+                          src={urlFor(event.image).width(400).height(250).quality(90).url()}
+                          alt={event.eventTitle}
+                          width={400}
+                          height={250}
+                          style={{ objectFit: 'cover' }}
+                        />
+                      </div>
+                    )}
                     <h3 className="schedule-card-title">{event.eventTitle}</h3>
                     {event.description && (
                       <p className="schedule-card-description">{event.description}</p>
