@@ -106,11 +106,15 @@ export default function Hero({ homepage, events }) {
                     <h3 className="hero-event-title">{event.eventTitle}</h3>
                     {event.eventDate && (
                       <p className="hero-event-date">
-                        {new Date(event.eventDate).toLocaleDateString('en-US', {
-                          month: 'long',
-                          day: 'numeric',
-                          year: 'numeric',
-                        })}
+                        {(() => {
+                          const [year, month, day] = event.eventDate.split('-').map(Number)
+                          const date = new Date(year, month - 1, day)
+                          return date.toLocaleDateString('en-US', {
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })
+                        })()}
                       </p>
                     )}
                     {event.eventTime && (

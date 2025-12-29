@@ -44,8 +44,9 @@ export default async function SchedulePage() {
   const upcomingSpecial = specialEvents.filter(
     (event) => {
       if (!event.eventDate) return false
-      // Parse the date in EST timezone
-      const eventDate = new Date(event.eventDate)
+      // Parse the date as local date (YYYY-MM-DD format)
+      const [year, month, day] = event.eventDate.split('-').map(Number)
+      const eventDate = new Date(year, month - 1, day)
       return eventDate >= now
     }
   )
@@ -79,12 +80,15 @@ export default async function SchedulePage() {
                     <h3 className="schedule-card-title">{event.eventTitle}</h3>
                     {event.eventDate && (
                       <p className="schedule-card-date">
-                        {new Date(event.eventDate).toLocaleDateString('en-US', {
-                          month: 'long',
-                          day: 'numeric',
-                          year: 'numeric',
-                          timeZone: 'America/New_York',
-                        })}
+                        {(() => {
+                          const [year, month, day] = event.eventDate.split('-').map(Number)
+                          const date = new Date(year, month - 1, day)
+                          return date.toLocaleDateString('en-US', {
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })
+                        })()}
                       </p>
                     )}
                     {event.description && (
@@ -127,12 +131,15 @@ export default async function SchedulePage() {
                       <h3 className="schedule-special-title">{event.eventTitle}</h3>
                       {event.eventDate && (
                         <p className="schedule-special-date">
-                          {new Date(event.eventDate).toLocaleDateString('en-US', {
-                            month: 'long',
-                            day: 'numeric',
-                            year: 'numeric',
-                            timeZone: 'America/New_York',
-                          })}
+                          {(() => {
+                            const [year, month, day] = event.eventDate.split('-').map(Number)
+                            const date = new Date(year, month - 1, day)
+                            return date.toLocaleDateString('en-US', {
+                              month: 'long',
+                              day: 'numeric',
+                              year: 'numeric',
+                            })
+                          })()}
                         </p>
                       )}
                     </div>
