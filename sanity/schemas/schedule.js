@@ -98,12 +98,13 @@ export default {
     prepare({ title, date, type, media }) {
       let subtitle = type === 'ongoing' ? 'Ongoing Event' : ''
       if (date && type === 'special') {
-        const dateObj = new Date(date)
+        // Parse date as local date to avoid timezone offset issues
+        const [year, month, day] = date.split('-').map(Number)
+        const dateObj = new Date(year, month - 1, day)
         subtitle = dateObj.toLocaleDateString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric',
-          timeZone: 'America/New_York',
         })
       }
       return {
