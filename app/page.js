@@ -1,14 +1,11 @@
-import { client } from '@/lib/sanity'
+import { fetchWithTag } from '@/lib/sanity'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import { urlFor } from '@/lib/sanity'
 
-// Enable ISR - revalidate every 60 seconds
-export const revalidate = 60
-
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
-  return await client.fetch(query, {}, { next: { revalidate: 3600 } }) // Cache for 1 hour
+  return await fetchWithTag(query, 'sanity-siteSettings')
 }
 
 async function getHomepage() {
@@ -21,7 +18,7 @@ async function getHomepage() {
       asset->
     }
   }`
-  return await client.fetch(query, {}, { next: { revalidate: 60 } })
+  return await fetchWithTag(query, 'sanity-homepage')
 }
 
 async function getHomeEvents() {
@@ -36,7 +33,7 @@ async function getHomeEvents() {
     additionalInfo,
     image
   }[0...6]`
-  return await client.fetch(query, {}, { next: { revalidate: 300 } }) // Cache for 5 minutes
+  return await fetchWithTag(query, 'sanity-schedule')
 }
 
 export async function generateMetadata() {

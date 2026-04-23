@@ -1,4 +1,4 @@
-import { client } from '@/lib/sanity'
+import { fetchWithTag } from '@/lib/sanity'
 import Header from '@/components/Header'
 import ContactForm from './ContactForm'
 
@@ -9,7 +9,7 @@ export const metadata = {
 
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
-  return await client.fetch(query)
+  return await fetchWithTag(query, 'sanity-siteSettings')
 }
 
 async function getUpcomingEvent() {
@@ -18,7 +18,7 @@ async function getUpcomingEvent() {
     eventDate,
     eventTime
   }`
-  return await client.fetch(query)
+  return await fetchWithTag(query, 'sanity-schedule')
 }
 
 export default async function ContactPage() {

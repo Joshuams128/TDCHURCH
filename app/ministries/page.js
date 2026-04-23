@@ -1,4 +1,4 @@
-import { client, urlFor } from '@/lib/sanity'
+import { fetchWithTag, urlFor } from '@/lib/sanity'
 import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
 import Image from 'next/image'
@@ -10,12 +10,12 @@ export const metadata = {
 
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
-  return await client.fetch(query)
+  return await fetchWithTag(query, 'sanity-siteSettings')
 }
 
 async function getMinistries() {
   const query = '*[_type == "ministries"][0]'
-  return await client.fetch(query)
+  return await fetchWithTag(query, 'sanity-ministries')
 }
 
 async function getUpcomingEvent() {
@@ -24,7 +24,7 @@ async function getUpcomingEvent() {
     eventDate,
     eventTime
   }`
-  return await client.fetch(query)
+  return await fetchWithTag(query, 'sanity-schedule')
 }
 
 export default async function MinistriesPage() {
