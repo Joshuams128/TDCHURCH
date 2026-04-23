@@ -3,6 +3,8 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import { urlFor } from '@/lib/sanity'
 
+export const dynamic = 'force-dynamic'
+
 async function getSiteSettings() {
   const query = '*[_type == "siteSettings"][0]'
   return await fetchWithTag(query, 'sanity-siteSettings')

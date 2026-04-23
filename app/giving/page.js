@@ -3,6 +3,8 @@ import { PortableText } from '@portabletext/react'
 import Header from '@/components/Header'
 import Image from 'next/image'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'Giving | TD Church',
   description: 'Support TD Church through online giving, text giving, and other donation options.',
