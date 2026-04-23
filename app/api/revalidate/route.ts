@@ -3,10 +3,18 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get('secret') || request.headers.get('x-revalidate-secret')
+  const expectedSecret = process.env.SANITY_REVALIDATE_SECRET
 
-  if (!secret || secret !== process.env.SANITY_REVALIDATE_SECRET) {
+  if (!secret || !expectedSecret) {
     return NextResponse.json(
-      { message: 'Invalid or missing revalidation secret' },
+      { message: 'Invalid or missing revalidation secret', received: !!secret, configured: !!expectedSecret },
+      { status: 401 }
+    )
+  }
+
+  if (secret !== expectedSecret) {
+    return NextResponse.json(
+      { message: 'Invalid or missing revalidation secret', expected: expectedSecret?.substring(0, 10) + '...', received: secret?.substring(0, 10) + '...' },
       { status: 401 }
     )
   }
