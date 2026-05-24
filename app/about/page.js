@@ -16,7 +16,12 @@ async function getSiteSettings() {
 }
 
 async function getAbout() {
-  const query = '*[_type == "about"][0]'
+  const query = `*[_type == "about"][0]{
+    ...,
+    mainVideo{
+      asset->
+    }
+  }`
   return await fetchWithTag(query, 'sanity-about')
 }
 
@@ -41,7 +46,7 @@ export default async function AboutPage() {
       <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
       <main className="about-page">
         {/* Main Intro Section */}
-        {(about?.mainHeading || about?.mainDescription || about?.mainImage) && (
+        {(about?.mainHeading || about?.mainDescription || about?.mainImage || about?.mainVideo) && (
           <section className="about-main-section">
             <div className="about-main-container">
               <div className="about-main-content">
@@ -56,7 +61,25 @@ export default async function AboutPage() {
                   </div>
                 )}
               </div>
-              {about?.mainImage && (
+              {about?.mainVideo?.asset?.url ? (
+                <div className="about-main-image">
+                  <video
+                    src={about.mainVideo.asset.url}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      borderRadius: '8px',
+                      display: 'block',
+                    }}
+                  />
+                </div>
+              ) : about?.mainImage ? (
                 <div className="about-main-image">
                   <Image
                     src={urlFor(about.mainImage).url()}
@@ -67,7 +90,7 @@ export default async function AboutPage() {
                     priority
                   />
                 </div>
-              )}
+              ) : null}
             </div>
           </section>
         )}

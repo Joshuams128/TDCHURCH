@@ -34,11 +34,21 @@ export default {
       group: 'main',
     },
     {
+      name: 'mainVideo',
+      title: 'Main Section Video',
+      type: 'file',
+      description: 'Upload a video to display on the right side (MP4 recommended). Takes priority over the image below.',
+      options: {
+        accept: 'video/*',
+      },
+      group: 'main',
+    },
+    {
       name: 'mainImage',
-      title: 'Main Section Image',
+      title: 'Main Section Image (Fallback)',
       type: 'image',
       options: { hotspot: true },
-      description: 'Image displayed on the right side of the first section',
+      description: 'Shown only if no video is uploaded above.',
       group: 'main',
     },
 
