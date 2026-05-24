@@ -36,6 +36,16 @@ export default async function SundayPage() {
     getUpcomingEvent(),
   ])
 
+  const defaultExpectItems = [
+    { icon: '♪', title: 'Worship', description: 'Heartfelt music that lifts your spirit and points your heart to Jesus.' },
+    { icon: '✦', title: 'The Word', description: 'Practical, Bible-based teaching you can apply to real life this week.' },
+    { icon: '♥', title: 'Community', description: "A warm welcome from a family that's genuinely glad you're here." },
+    { icon: '★', title: 'Kids Program', description: 'Safe, fun environments where children learn about Jesus at their level.' },
+  ]
+  const expectItems = (sunday?.expectItems && sunday.expectItems.length > 0)
+    ? sunday.expectItems
+    : defaultExpectItems
+
   return (
     <>
       <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
@@ -44,12 +54,21 @@ export default async function SundayPage() {
         <section className="sunday-hero">
           <div className="sunday-hero-container">
             <div className="sunday-hero-left">
+              <span className="sunday-eyebrow">{sunday?.eyebrow || 'This Sunday'}</span>
               {sunday?.heading && (
                 <h1 className="sunday-main-heading">{sunday.heading}</h1>
               )}
-              {sunday?.description && (
+              <span className="divider-accent left"></span>
+              {sunday?.description ? (
                 <div className="sunday-description">
                   <PortableText value={sunday.description} />
+                </div>
+              ) : (
+                <div className="sunday-description">
+                  <p>
+                    Whether it's your first time or your hundredth, you're welcome here.
+                    Come as you are — we can't wait to worship with you.
+                  </p>
                 </div>
               )}
             </div>
@@ -68,6 +87,7 @@ export default async function SundayPage() {
                     </div>
                   )}
                   <div className="sermon-content">
+                    <span className="sermon-label">Latest Message</span>
                     <h3 className="sermon-preacher">
                       {sunday.featuredSermon.preacher}
                     </h3>
@@ -90,10 +110,39 @@ export default async function SundayPage() {
           </div>
         </section>
 
+        {/* What to Expect Section */}
+        <section className="expect-section">
+          <div className="expect-container">
+            <div className="section-intro">
+              <span className="section-eyebrow">{sunday?.expectEyebrow || 'First Time Here?'}</span>
+              <h2 className="section-intro-heading">{sunday?.expectHeading || 'What to Expect'}</h2>
+              <span className="divider-accent"></span>
+              <p className="section-intro-text">
+                {sunday?.expectDescription ||
+                  "We've designed our Sunday gatherings to be welcoming, encouraging, and life-giving."}
+              </p>
+            </div>
+            <div className="expect-grid">
+              {expectItems.map((item, index) => (
+                <div key={index} className="expect-card">
+                  <div className="expect-icon">{item.icon || '✦'}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Locations Section */}
         {sunday?.location && sunday.location.length > 0 && (
           <section className="locations-section">
-            <h2 className="locations-heading">OUR LOCATION</h2>
+            <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center', marginBottom: '2rem' }}>
+              <span className="section-eyebrow">{sunday?.locationEyebrow || 'Visit Us'}</span>
+            </div>
+            <h2 className="locations-heading" style={{ textAlign: 'center' }}>
+              {sunday?.locationHeading || 'OUR LOCATION'}
+            </h2>
             <div className="locations-grid">
               {sunday.location.map((location, index) => (
                 <div key={index} className="location-card">
@@ -160,9 +209,11 @@ export default async function SundayPage() {
                 )}
               </div>
               <div className="sunday-kids-content">
+                <span className="section-eyebrow">{sunday?.kidsEyebrow || 'For the Whole Family'}</span>
                 {sunday?.kidsHeading && (
                   <h2 className="sunday-kids-heading">{sunday.kidsHeading}</h2>
                 )}
+                <span className="divider-accent left"></span>
                 {sunday?.kidsDescription && (
                   <div className="sunday-kids-description">
                     <PortableText value={sunday.kidsDescription} />
@@ -174,6 +225,20 @@ export default async function SundayPage() {
                   </a>
                 )}
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* Closing Scripture */}
+        {(sunday?.closingScriptureText || sunday?.closingScriptureReference) && (
+          <section className="scripture-callout">
+            <div className="scripture-callout-container">
+              {sunday?.closingScriptureText && (
+                <p className="scripture-text">{sunday.closingScriptureText}</p>
+              )}
+              {sunday?.closingScriptureReference && (
+                <span className="scripture-reference">{sunday.closingScriptureReference}</span>
+              )}
             </div>
           </section>
         )}

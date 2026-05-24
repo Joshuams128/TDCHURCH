@@ -2794,3 +2794,814 @@ body {
   }
 }
 
+/* ============================================
+   SHARED MODERN COMPONENTS
+   ============================================ */
+
+/* Section Eyebrow Label - small uppercase tag above heading */
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #000;
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 1rem;
+  background: #FFEB3B;
+  border-radius: 2px;
+}
+
+.section-eyebrow.eyebrow-light {
+  background: transparent;
+  color: #666;
+  padding: 0;
+  border-bottom: 2px solid #FFEB3B;
+  padding-bottom: 0.5rem;
+  border-radius: 0;
+}
+
+/* Scripture Callout - inspirational quote block */
+.scripture-callout {
+  padding: 5rem 2rem;
+  background: #000;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.scripture-callout::before {
+  content: '"';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18rem;
+  color: #FFEB3B;
+  opacity: 0.12;
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.scripture-callout-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.scripture-text {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.4;
+  font-style: italic;
+  color: white;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.scripture-reference {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #FFEB3B;
+  padding-top: 1rem;
+  border-top: 2px solid #FFEB3B;
+  margin-top: 1rem;
+}
+
+/* Light scripture callout variant */
+.scripture-callout.light {
+  background: #FFEB3B;
+  color: #000;
+}
+
+.scripture-callout.light::before {
+  color: #000;
+  opacity: 0.08;
+}
+
+.scripture-callout.light .scripture-text {
+  color: #000;
+}
+
+.scripture-callout.light .scripture-reference {
+  color: #000;
+  border-top-color: #000;
+}
+
+/* Subtle scripture (white bg) */
+.scripture-callout.subtle {
+  background: #fafafa;
+  color: #000;
+  padding: 4rem 2rem;
+}
+
+.scripture-callout.subtle::before {
+  color: #000;
+  opacity: 0.06;
+}
+
+.scripture-callout.subtle .scripture-text {
+  color: #000;
+}
+
+.scripture-callout.subtle .scripture-reference {
+  color: #000;
+  border-top-color: #FFEB3B;
+}
+
+@media (max-width: 768px) {
+  .scripture-callout {
+    padding: 4rem 1.5rem;
+  }
+  .scripture-callout::before {
+    font-size: 12rem;
+    top: -1rem;
+  }
+}
+
+/* Section Intro - centered text-only intro */
+.section-intro {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.section-intro-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+}
+
+.section-intro-text {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Decorative Divider */
+.divider-accent {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #FFEB3B;
+  margin: 1.5rem auto;
+  border-radius: 2px;
+}
+
+.divider-accent.left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Why-We-Give Reason Cards (used on Giving) */
+.reasons-section {
+  padding: 6rem 2rem;
+  background: white;
+}
+
+.reasons-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.reason-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: #fafafa;
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.reason-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  background: white;
+}
+
+.reason-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #FFEB3B;
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 900;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+.reason-title {
+  font-size: 1.375rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.reason-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Page Hero with Eyebrow Banner */
+.page-banner {
+  padding: 7rem 2rem 4rem;
+  background: #000;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: #FFEB3B;
+}
+
+.page-banner-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.page-banner-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #FFEB3B;
+  margin-bottom: 1.5rem;
+}
+
+.page-banner-heading {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 1.5rem;
+}
+
+.page-banner-subtext {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .page-banner {
+    padding: 6rem 1.5rem 3rem;
+  }
+}
+
+/* Enhanced Giving Cards */
+.giving-card-modern {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.giving-card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  border-color: #FFEB3B;
+}
+
+.giving-card-icon {
+  width: 64px;
+  height: 64px;
+  background: #FFEB3B;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.giving-card-modern h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000;
+}
+
+.giving-card-modern p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  flex: 1;
+}
+
+.giving-card-modern .giving-button {
+  background: #000;
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.giving-card-modern .giving-button:hover {
+  background: #FFEB3B;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Find Your Place / Ministries Intro */
+.ministries-intro {
+  padding: 6rem 2rem 3rem;
+  background: white;
+  text-align: center;
+}
+
+.ministries-intro-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ministry-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eee;
+  position: relative;
+}
+
+.ministry-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.ministry-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #FFEB3B;
+  transition: width 0.4s ease;
+}
+
+.ministry-card:hover::after {
+  width: 100%;
+}
+
+/* What to Expect Section (Sunday) */
+.expect-section {
+  padding: 6rem 2rem;
+  background: #fafafa;
+}
+
+.expect-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.expect-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.expect-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.expect-card:hover {
+  border-color: #FFEB3B;
+  transform: translateY(-4px);
+}
+
+.expect-icon {
+  width: 56px;
+  height: 56px;
+  background: #000;
+  color: #FFEB3B;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.expect-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000;
+  margin-bottom: 0.75rem;
+}
+
+.expect-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Beliefs Intro Enhancement */
+.beliefs-intro-section {
+  padding: 6rem 2rem 3rem;
+  background: white;
+  text-align: center;
+}
+
+.beliefs-intro-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Conduct list refinement */
+.beliefs-conduct-list-modern {
+  text-align: left;
+  list-style: none;
+  counter-reset: conduct-counter;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.beliefs-conduct-list-modern .beliefs-conduct-item {
+  position: relative;
+  padding: 1.25rem 1.5rem 1.25rem 4rem;
+  background: #fafafa;
+  border-radius: 12px;
+  border-left: 4px solid #FFEB3B;
+  counter-increment: conduct-counter;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.beliefs-conduct-list-modern .beliefs-conduct-item:before {
+  content: counter(conduct-counter);
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  background: #000;
+  color: #FFEB3B;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+/* Faith card enhancement */
+.beliefs-faith-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.beliefs-faith-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #FFEB3B;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.beliefs-faith-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Contact Page Modern Layout */
+.contact-modern-page {
+  min-height: 100vh;
+  background: white;
+}
+
+.contact-modern-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-info-side {
+  position: sticky;
+  top: 6rem;
+}
+
+.contact-info-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #000;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.85rem;
+  background: #FFEB3B;
+  border-radius: 2px;
+}
+
+.contact-info-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.contact-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-info-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #999;
+}
+
+.contact-info-value {
+  font-size: 1.05rem;
+  color: #000;
+  font-weight: 600;
+}
+
+.contact-form-card {
+  background: #fafafa;
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid #eee;
+}
+
+@media (max-width: 968px) {
+  .contact-modern-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 4rem 1.5rem;
+  }
+  .contact-info-side {
+    position: static;
+  }
+  .contact-form-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Sunday Hero Enhancement */
+.sunday-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #000;
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 1rem;
+  background: #FFEB3B;
+  border-radius: 2px;
+}
+
+/* About Mission Quote-style Section */
+.about-quote-section {
+  background: #FFEB3B;
+  padding: 6rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-quote-section::before {
+  content: '"';
+  position: absolute;
+  top: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20rem;
+  color: rgba(0, 0, 0, 0.08);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.about-quote-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.about-quote-text {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #000;
+  letter-spacing: -0.5px;
+}
+
+.about-quote-attribution {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #000;
+  padding-top: 1rem;
+  border-top: 2px solid #000;
+}
+
+/* Schedule Modern Eyebrow */
+.schedule-section-label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #FFEB3B;
+  margin-bottom: 1.5rem;
+}
+
+.schedule-section-heading {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 235, 59, 0.4);
+}
+
+.schedule-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+}
+
+/* Vision section enhancement (about) */
+.about-vision-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-vision-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 4px;
+  background: #FFEB3B;
+  transition: transform 0.4s ease;
+}
+
+.about-vision-card:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Building Fund Verse Section */
+.bf-verse-section {
+  padding: 5rem 2rem;
+  background: #000;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.bf-verse-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #FFEB3B;
+}
+
+.bf-verse-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.bf-verse-text {
+  font-size: clamp(1.4rem, 3vw, 2.25rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.bf-verse-reference {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #FFEB3B;
+}
+
+/* Page transition animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}

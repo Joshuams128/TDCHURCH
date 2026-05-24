@@ -14,6 +14,11 @@ async function getSiteSettings() {
   return await fetchWithTag(query, 'sanity-siteSettings')
 }
 
+async function getContactPage() {
+  const query = '*[_type == "contactPage"][0]'
+  return await fetchWithTag(query, 'sanity-contactPage')
+}
+
 async function getUpcomingEvent() {
   const query = `*[_type == "schedule" && showOnHomepage == true] | order(eventDate asc) [0] {
     eventTitle,
@@ -24,15 +29,16 @@ async function getUpcomingEvent() {
 }
 
 export default async function ContactPage() {
-  const [siteSettings, upcomingEvent] = await Promise.all([
+  const [siteSettings, contactPage, upcomingEvent] = await Promise.all([
     getSiteSettings(),
+    getContactPage(),
     getUpcomingEvent(),
   ])
 
   return (
     <>
       <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
-      <ContactForm />
+      <ContactForm contactPage={contactPage} />
     </>
   )
 }

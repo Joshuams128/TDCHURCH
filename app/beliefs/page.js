@@ -61,10 +61,42 @@ export default async function BeliefsPage() {
           </section>
         )}
 
+        {/* Intro Section */}
+        <section className="beliefs-intro-section">
+          <div className="beliefs-intro-container">
+            <span className="section-eyebrow">{beliefs?.introEyebrow || 'Our Foundation'}</span>
+            <h2 className="section-intro-heading">
+              {beliefs?.introHeading || 'Rooted in Christ. Anchored in Scripture.'}
+            </h2>
+            <span className="divider-accent"></span>
+            <p className="section-intro-text">
+              {beliefs?.introText ||
+                'What we believe shapes how we live. These are the convictions that guide our church, our community, and our mission to share the love of Jesus with the world.'}
+            </p>
+          </div>
+        </section>
+
+        {/* Scripture Callout */}
+        {(beliefs?.scriptureText || beliefs?.scriptureReference) && (
+          <section className="scripture-callout subtle">
+            <div className="scripture-callout-container">
+              {beliefs?.scriptureText && (
+                <p className="scripture-text">{beliefs.scriptureText}</p>
+              )}
+              {beliefs?.scriptureReference && (
+                <span className="scripture-reference">{beliefs.scriptureReference}</span>
+              )}
+            </div>
+          </section>
+        )}
+
         {/* General Rules of Conduct */}
         {beliefs?.conductHeading && (
           <section className="beliefs-conduct-section">
             <div className="beliefs-conduct-container">
+              <span className="section-eyebrow eyebrow-light">
+                {beliefs?.conductEyebrow || 'How We Live'}
+              </span>
               <h2 className="beliefs-conduct-heading">{beliefs.conductHeading}</h2>
               {beliefs?.conductIntro && (
                 <div className="beliefs-conduct-intro">
@@ -72,7 +104,7 @@ export default async function BeliefsPage() {
                 </div>
               )}
               {beliefs?.conductRules && beliefs.conductRules.length > 0 && (
-                <ol className="beliefs-conduct-list">
+                <ol className="beliefs-conduct-list beliefs-conduct-list-modern">
                   {beliefs.conductRules.map((item, index) => (
                     <li key={index} className="beliefs-conduct-item">
                       <PortableText value={item.rule} />
@@ -88,7 +120,11 @@ export default async function BeliefsPage() {
         {beliefs?.faithHeading && (
           <section className="beliefs-faith-section">
             <div className="beliefs-faith-container">
-              <h2 className="beliefs-faith-heading">{beliefs.faithHeading}</h2>
+              <div className="section-intro">
+                <span className="section-eyebrow">{beliefs?.faithEyebrow || 'What We Stand On'}</span>
+                <h2 className="beliefs-faith-heading">{beliefs.faithHeading}</h2>
+                <span className="divider-accent"></span>
+              </div>
               {beliefs?.faithStatements && beliefs.faithStatements.length > 0 && (
                 <div className="beliefs-faith-grid">
                   {beliefs.faithStatements.map((statement, index) => (

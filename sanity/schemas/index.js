@@ -7,6 +7,8 @@ import buildingFund from './buildingFund'
 import giving from './giving'
 import sunday from './sunday'
 import schedule from './schedule'
+import schedulePage from './schedulePage'
+import contactPage from './contactPage'
 
 export const schemaTypes = [
   siteSettings,
@@ -18,4 +20,6 @@ export const schemaTypes = [
   giving,
   sunday,
   schedule,
+  schedulePage,
+  contactPage,
 ]

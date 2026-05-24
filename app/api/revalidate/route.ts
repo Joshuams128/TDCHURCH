@@ -29,8 +29,9 @@ export async function POST(request: NextRequest) {
     revalidateTag('sanity-beliefs')
     revalidateTag('sanity-sunday')
     revalidateTag('sanity-schedule')
+    revalidateTag('sanity-schedulePage')
     revalidateTag('sanity-buildingFund')
-    revalidateTag('sanity-contact')
+    revalidateTag('sanity-contactPage')
 
     // Also revalidate all page paths
     revalidatePath('/')

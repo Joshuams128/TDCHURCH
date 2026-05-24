@@ -25,33 +25,37 @@ async function getSchedule() {
     location,
     description,
     additionalInfo,
-    image,
-    featured
+    image
   }`
   return await fetchWithTag(query, 'sanity-schedule')
 }
 
+async function getSchedulePage() {
+  const query = '*[_type == "schedulePage"][0]'
+  return await fetchWithTag(query, 'sanity-schedulePage')
+}
+
 export default async function SchedulePage() {
-  const [siteSettings, scheduleEvents] = await Promise.all([
+  const [siteSettings, scheduleEvents, schedulePage] = await Promise.all([
     getSiteSettings(),
     getSchedule(),
+    getSchedulePage(),
   ])
 
-  // Separate ongoing and special events
   const ongoingEvents = scheduleEvents.filter((event) => event.eventType === 'ongoing')
   const specialEvents = scheduleEvents.filter((event) => event.eventType === 'special')
-  
-  // Filter special events by upcoming/past
+
   const now = new Date()
   const upcomingSpecial = specialEvents.filter(
     (event) => {
       if (!event.eventDate) return false
-      // Parse the date as local date (YYYY-MM-DD format)
       const [year, month, day] = event.eventDate.split('-').map(Number)
       const eventDate = new Date(year, month - 1, day)
       return eventDate >= now
     }
   )
+
+  const hasEvents = ongoingEvents.length > 0 || upcomingSpecial.length > 0
 
   return (
     <>
@@ -59,12 +63,70 @@ export default async function SchedulePage() {
         <div className="schedule-fullscreen-overlay" />
         <div className="schedule-fullscreen-content">
           <BackButton />
-          
-          <h1 className="schedule-fullscreen-title">COMING UP AT TDC</h1>
-          
+
+          <span className="schedule-section-label">
+            {schedulePage?.eyebrow || "What's Happening"}
+          </span>
+          <h1 className="schedule-fullscreen-title">
+            {schedulePage?.title || 'COMING UP AT TDC'}
+          </h1>
+
+          {!hasEvents && (
+            <div className="schedule-empty">
+              <p>
+                {schedulePage?.emptyText ||
+                  'No upcoming events right now. Check back soon — something is always around the corner.'}
+              </p>
+            </div>
+          )}
+
+          {/* Special Events Section */}
+          {upcomingSpecial.length > 0 && (
+            <div className="schedule-section">
+              <h2 className="schedule-section-heading">
+                {schedulePage?.specialHeading || 'Special Events'}
+              </h2>
+              <div className="schedule-special-grid">
+                {upcomingSpecial.map((event) => (
+                  <div key={event._id} className="schedule-special-card">
+                    {event.image && (
+                      <div className="schedule-special-image">
+                        <Image
+                          src={urlFor(event.image).url()}
+                          alt={event.eventTitle}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                        />
+                      </div>
+                    )}
+                    <div className="schedule-special-overlay">
+                      <h3 className="schedule-special-title">{event.eventTitle}</h3>
+                      {event.eventDate && (
+                        <p className="schedule-special-date">
+                          {(() => {
+                            const [year, month, day] = event.eventDate.split('-').map(Number)
+                            const date = new Date(year, month - 1, day)
+                            return date.toLocaleDateString('en-US', {
+                              month: 'long',
+                              day: 'numeric',
+                              year: 'numeric',
+                            })
+                          })()}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Ongoing Events Section */}
           {ongoingEvents.length > 0 && (
             <div className="schedule-section">
+              <h2 className="schedule-section-heading">
+                {schedulePage?.ongoingHeading || 'Weekly & Ongoing'}
+              </h2>
               <div className="schedule-events-grid">
                 {ongoingEvents.map((event) => (
                   <div key={event._id} className="schedule-ongoing-card">
@@ -105,44 +167,6 @@ export default async function SchedulePage() {
                       )}
                       {event.additionalInfo && (
                         <p className="schedule-card-info">{event.additionalInfo}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Special Events Section */}
-          {upcomingSpecial.length > 0 && (
-            <div className="schedule-section">
-              <div className="schedule-special-grid">
-                {upcomingSpecial.map((event) => (
-                  <div key={event._id} className="schedule-special-card">
-                    {event.image && (
-                      <div className="schedule-special-image">
-                        <Image
-                          src={urlFor(event.image).url()}
-                          alt={event.eventTitle}
-                          fill
-                          style={{ objectFit: 'cover' }}
-                        />
-                      </div>
-                    )}
-                    <div className="schedule-special-overlay">
-                      <h3 className="schedule-special-title">{event.eventTitle}</h3>
-                      {event.eventDate && (
-                        <p className="schedule-special-date">
-                          {(() => {
-                            const [year, month, day] = event.eventDate.split('-').map(Number)
-                            const date = new Date(year, month - 1, day)
-                            return date.toLocaleDateString('en-US', {
-                              month: 'long',
-                              day: 'numeric',
-                              year: 'numeric',
-                            })
-                          })()}
-                        </p>
                       )}
                     </div>
                   </div>

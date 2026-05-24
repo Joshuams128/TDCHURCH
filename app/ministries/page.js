@@ -40,19 +40,45 @@ export default async function MinistriesPage() {
     <>
       <Header siteSettings={siteSettings} upcomingEvent={upcomingEvent} />
       <main className="content-page">
-        <section className="content-hero">
-          <div className="content-container">
-            {ministries?.heading && (
-              <h1 className="page-heading">{ministries.heading}</h1>
+        {/* Intro Section */}
+        <section className="ministries-intro">
+          <div className="ministries-intro-container">
+            <span className="section-eyebrow">{ministries?.eyebrow || 'Find Your People'}</span>
+            {ministries?.heading ? (
+              <h1 className="section-intro-heading">{ministries.heading}</h1>
+            ) : (
+              <h1 className="section-intro-heading">Discover Your Place</h1>
             )}
-            {ministries?.subheading && (
+            <span className="divider-accent"></span>
+            {ministries?.subheading ? (
               <div className="page-subheading">
                 <PortableText value={ministries.subheading} />
               </div>
+            ) : (
+              <p className="section-intro-text">
+                Church is more than a Sunday service — it's a family.
+                Our ministries are the places we grow together, serve together,
+                and live out our faith in real community.
+              </p>
             )}
           </div>
         </section>
 
+        {/* Scripture Callout */}
+        {(ministries?.scriptureText || ministries?.scriptureReference) && (
+          <section className="scripture-callout subtle">
+            <div className="scripture-callout-container">
+              {ministries?.scriptureText && (
+                <p className="scripture-text">{ministries.scriptureText}</p>
+              )}
+              {ministries?.scriptureReference && (
+                <span className="scripture-reference">{ministries.scriptureReference}</span>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* Ministry Grid */}
         {ministries?.ministryList && ministries.ministryList.length > 0 && (
           <section className="ministry-grid">
             <div className="grid-container">
@@ -77,6 +103,20 @@ export default async function MinistriesPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+        )}
+
+        {/* Closing Callout */}
+        {(ministries?.closingText || ministries?.closingLabel) && (
+          <section className="scripture-callout">
+            <div className="scripture-callout-container">
+              {ministries?.closingText && (
+                <p className="scripture-text">{ministries.closingText}</p>
+              )}
+              {ministries?.closingLabel && (
+                <span className="scripture-reference">{ministries.closingLabel}</span>
+              )}
             </div>
           </section>
         )}

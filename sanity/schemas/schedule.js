@@ -68,13 +68,6 @@ export default {
       description: 'Display this event in the homepage carousel',
       initialValue: true,
     },
-    {
-      name: 'featured',
-      title: 'Featured Event',
-      type: 'boolean',
-      description: 'Show this event prominently',
-      initialValue: false,
-    },
   ],
   orderings: [
     {

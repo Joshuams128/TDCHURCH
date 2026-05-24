@@ -64,32 +64,5 @@ export default {
       type: 'url',
       description: 'Your TikTok profile URL',
     },
-    {
-      name: 'socialLinks',
-      title: 'Social Links',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'platform',
-              title: 'Platform Name',
-              type: 'string',
-            },
-            {
-              name: 'url',
-              title: 'URL',
-              type: 'string',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'footerText',
-      title: 'Footer Text',
-      type: 'text',
-    },
   ],
 }

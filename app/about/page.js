@@ -45,9 +45,11 @@ export default async function AboutPage() {
           <section className="about-main-section">
             <div className="about-main-container">
               <div className="about-main-content">
+                <span className="section-eyebrow">{about?.mainEyebrow || 'Who We Are'}</span>
                 {about?.mainHeading && (
                   <h1 className="about-main-heading">{about.mainHeading}</h1>
                 )}
+                <span className="divider-accent left"></span>
                 {about?.mainDescription && (
                   <div className="about-main-description">
                     <PortableText value={about.mainDescription} />
@@ -70,14 +72,30 @@ export default async function AboutPage() {
           </section>
         )}
 
+        {/* Inspirational Quote */}
+        {(about?.quoteText || about?.quoteAttribution) && (
+          <section className="about-quote-section">
+            <div className="about-quote-container">
+              {about?.quoteText && (
+                <p className="about-quote-text">{about.quoteText}</p>
+              )}
+              {about?.quoteAttribution && (
+                <span className="about-quote-attribution">{about.quoteAttribution}</span>
+              )}
+            </div>
+          </section>
+        )}
+
         {/* Pastors Section */}
         {(about?.pastorsHeading || about?.pastorsText1 || about?.pastorsImage) && (
           <section className="about-pastors-section">
             <div className="about-pastors-container">
               <div className="about-pastors-content">
+                <span className="section-eyebrow">{about?.pastorsEyebrow || 'Meet Our Pastors'}</span>
                 {about?.pastorsHeading && (
                   <h2 className="about-pastors-heading">{about.pastorsHeading}</h2>
                 )}
+                <span className="divider-accent left"></span>
                 {about?.pastorsText1 && (
                   <div className="about-pastors-text">
                     <PortableText value={about.pastorsText1} />
@@ -120,9 +138,11 @@ export default async function AboutPage() {
                 </div>
               )}
               <div className="about-c3-content">
+                <span className="section-eyebrow">{about?.c3GlobalEyebrow || 'Part of Something Bigger'}</span>
                 {about?.c3GlobalHeading && (
                   <h2 className="about-c3-heading">{about.c3GlobalHeading}</h2>
                 )}
+                <span className="divider-accent left"></span>
                 {about?.c3GlobalText1 && (
                   <div className="about-c3-text">
                     <PortableText value={about.c3GlobalText1} />
@@ -148,12 +168,14 @@ export default async function AboutPage() {
           <section className="about-vision-section">
             <div className="about-vision-container">
               <div className="about-vision-header">
+                <span className="section-eyebrow">{about?.visionEyebrow || 'Our Vision'}</span>
                 {about?.visionHeading && (
                   <h2 className="about-vision-heading">{about.visionHeading}</h2>
                 )}
                 {about?.visionSubheading && (
                   <p className="about-vision-subheading">{about.visionSubheading}</p>
                 )}
+                <span className="divider-accent"></span>
               </div>
               {about?.visionItems && about.visionItems.length > 0 && (
                 <div className="about-vision-grid">
