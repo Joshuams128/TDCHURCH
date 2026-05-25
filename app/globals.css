@@ -1225,6 +1225,7 @@ body {
 
   .about-main-image {
     min-height: 400px;
+    order: -1;
   }
 }
 
