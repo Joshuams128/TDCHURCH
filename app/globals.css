@@ -2726,6 +2726,7 @@ body {
 
   .building-fund-hero-image {
     height: 400px;
+    order: -1;
   }
 
   .building-fund-tagline {
